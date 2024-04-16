@@ -49,8 +49,8 @@ Contexto: Uma biblioteca precisa de um sistema para gerenciar seus livros, clien
 
 **5.ArrayList(5%):** ArrayList é usado para armazenar a lista de livros emprestados por um cliente (na classe Cliente) e a lista de livros e clientes na biblioteca (na classe Biblioteca).
 
-**6.Entrega (5%):** Link do GitHub via Teams. No GitHub deve conter o código, além de screenshots da interface do usuário. Um readme com uma breve descrição do que foi feito deve estar preenchido. A equipe toda deve ter acesso ao GitHub compartilhado (é um projeto em equipe).
+**6.Entrega(5%):** Link do GitHub via Teams. No GitHub deve conter o código, além de screenshots da interface do usuário. Um readme com uma breve descrição do que foi feito deve estar preenchido. A equipe toda deve ter acesso ao GitHub compartilhado (é um projeto em equipe).
 
 **7.Requisitos adicionais(30%):** Será considerado o que for feito além do requerimento mínimo esperado.
 
-**8.Easter Egg ao cliente (10%):** Surpreenda o cliente com algo interessante.9.Apresentação(20%): Pitch de no máximo 10 minutos vendendo a ideia. Será avaliado pela turma (cliente em potencial) por votação (kahoot) qual o melhor projeto(comprou a ideia) entre dois projetos apresentados
+**8.Easter Egg ao cliente(10%):** Surpreenda o cliente com algo interessante.9.Apresentação(20%): Pitch de no máximo 10 minutos vendendo a ideia. Será avaliado pela turma (cliente em potencial) por votação (kahoot) qual o melhor projeto(comprou a ideia) entre dois projetos apresentados
