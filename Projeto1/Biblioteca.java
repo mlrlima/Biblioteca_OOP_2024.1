@@ -1,11 +1,11 @@
 class Biblioteca {
     
-    private ArrayList<Livro> ListaCliente;
-    private ArrayList<Cliente> ListaLivro;
+    private ArrayList<Livro> listaCliente;
+    private ArrayList<Cliente> listaLivro;
     
     public listas(){
-        Lista Livros = new ArrayList<>();
-        Lista Cliente = new ArrayList<>();
+        listaLivro = new ArrayList<>();
+        listaCliente = new ArrayList<>();
         
     }
 
