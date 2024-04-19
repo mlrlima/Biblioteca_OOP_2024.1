@@ -8,21 +8,21 @@ void criarconta(){
     System.out.println("----------------------------------------");
 
     
-    Sring cpf, nome, senha, endereco, telefone;
+    String cpf, nome, senha, endereco, telefone;
     
-        System.out.println("Digite seu nome: ");
-        nome = s.nextLine();
-        s.nextLine();
+    System.out.println("Digite seu nome: ");
+    nome = s.nextLine();
+    s.nextLine();
 
-        System.out.println("Digite seu endereco: ");
-        nome = s.nextLine();
-        s.nextLine();
+    System.out.println("Digite seu endereco: ");
+    nome = s.nextLine();
+    s.nextLine();
 
-        do{
-            System.out.println("Digite seu telefone: ");
-            telefone = s.nextLine();
-            s.nextLine();
-        }while(telefone.length()>13 || telefone.length()<9);
+    do{
+        System.out.println("Digite seu telefone: ");
+        telefone = s.nextLine();
+        s.nextLine();
+    }while(telefone.length()>13 || telefone.length()<9);
 
 
     do{
@@ -43,7 +43,11 @@ void criarconta(){
 
     String senhauppercase=senha.toUpperCase();
     int tamanhodasenha=senha.lenght();
-    if(senhauppercase[tamanhodasenha-1]=='K' && senhauppercase[tamanhodasenha-1]=='B' senhauppercase[tamanhodasenha-1]=='#' senhauppercase[tamanhodasenha-1]=='*'  senhauppercase[tamanhodasenha-1]=='*'){
+    if(senhauppercase[tamanhodasenha-1]=='K' && 
+    senhauppercase[tamanhodasenha-1]=='B' &&
+    senhauppercase[tamanhodasenha-1]=='#' &&
+    senhauppercase[tamanhodasenha-1]=='*' &&
+    senhauppercase[tamanhodasenha-1]=='*'){
 
     }
     else{

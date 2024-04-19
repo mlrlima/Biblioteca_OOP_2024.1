@@ -2,7 +2,7 @@
 public class Pessoa{
     protected String nome, endereco, telefone;
 
-    void setNome(Stirng nome){
+    void setNome(String nome){
         this.nome=nome;
     }
     String getNome(){
