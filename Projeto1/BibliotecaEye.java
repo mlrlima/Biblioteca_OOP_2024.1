@@ -1,6 +1,6 @@
 package Biblioteca;
 
-class BibliotecaEye extends Biblioteca{
+class BibliotecaEye extends Pessoa{
 
 
     void printarLivro(){
@@ -38,8 +38,6 @@ class BibliotecaEye extends Biblioteca{
                 printarLivros();
 
             case 3:
-
-                if
 
             case 4:
         }

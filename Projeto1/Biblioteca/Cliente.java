@@ -1,10 +1,11 @@
 package Biblioteca;
+import java.util.*;
 
 public class Cliente extends Pessoa  {
     private String idCliente;
-    private ArrayList<Livro> livrosEmprestados;
+    
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
@@ -20,14 +21,6 @@ public class Cliente extends Pessoa  {
         this.livrosEmprestados = livrosEmprestados;
     }
 
-    public void emprestarLivro(Livro livro) {
-        livrosEmprestados.add(livro);
-    }
-
-    public void devolverLivro(Livro livro) {
-        livrosEmprestados.remove(livro);
-    }
-}    
-                
+}
     
             

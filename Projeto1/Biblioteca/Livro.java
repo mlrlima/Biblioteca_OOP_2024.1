@@ -1,13 +1,23 @@
+package Biblioteca;
 
 public class Livro{
     protected String titulo, autor, id;
+    protected int genero;
     protected boolean status; //true== disponivel / false== emprestado
+    double rating;
 
     void setTitulo(String titulo){
         this.titulo=titulo;
     }
     String getTitulo(){
-        return titulo;
+      return titulo;
+    }
+
+    void setGenero(int genero){
+        this.genero=genero;
+    }
+    int getGenero(){
+        return genero;
     }
 
     void setAutor(String autor){
