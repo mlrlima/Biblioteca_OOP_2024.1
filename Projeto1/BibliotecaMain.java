@@ -1,17 +1,15 @@
 
-import Biblioteca;
+import Biblioteca.*;
 
 import java.util.*;
 import java.io.*;
-import java.time.*
+import java.time.*;
 
 class BibliotecaMain {
-
-    Scanner input = new Scanner(System.in);
     
     //Listas de Livros Clientes
-    private ArrayList <Livro> listaCliente = new ArrayList <Cliente>();
-    private ArrayList <Cliente> listaLivro = new ArrayList <Livro>();
+    ArrayList <Cliente> listaCliente = new ArrayList <Cliente>();
+    ArrayList <Livro> listaLivro = new ArrayList <Livro>();
 
 
     public void addLivro(Livro livro) {
@@ -30,7 +28,7 @@ class BibliotecaMain {
         listaCliente.remove(cliente);
     }
     
-    void interfaceUser(String usuario){
+    public void interfaceUser(String usuario){
         System.out.println("----------------------------------------");
         System.out.println("\tBEM-VINDO, USUARIO!!!");
         System.out.println("----------------------------------------");
@@ -39,7 +37,7 @@ class BibliotecaMain {
         System.out.print("--> ");
     }
 
-    void criarConta(){
+    static void criarConta(){
         Scanner s=new Scanner(System.in);
     
         System.out.println("----------------------------------------");
@@ -93,7 +91,8 @@ class BibliotecaMain {
         listaCliente.add(c);
     }
 
-    void entrarConta(){
+    static void entrarConta(){
+        Scanner input = new Scanner(System.in);
 
         System.out.println("----------------------------------------");
         System.out.println("\tENTRAR");
@@ -150,7 +149,8 @@ class BibliotecaMain {
     }
 
     
-    int inicializarMenu(){
+    static int inicializarMenu(){
+        Scanner input = new Scanner(System.in);
         do{
             System.out.println("----------------------------------------");
             System.out.println("\tSISTEMA BIBLIOTECÁRIO UNICAP");
@@ -167,21 +167,22 @@ class BibliotecaMain {
         return choice;
 }
 
-    public static void bibliotecaMain(String[] args){
+    public static void main(String[] args){
+        int choice;
         do{
-            int choice=inicializarMenu();
+            choice=inicializarMenu();
             switch(choice){
                 case 2:
-                    criarconta();
+                    criarConta();
 
                 case 1:
                     entrarConta();
-            }  
+            }
         }while(choice!=3);
 
         System.out.println("----------------------------------------");
         System.out.println("\nObrigado pela preferência.");
         System.out.println("----------------------------------------");
-        return 0;
+        return;
     }
 }

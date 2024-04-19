@@ -2,7 +2,7 @@ package Biblioteca;
 import java.util.*;
 
 public class Pessoa{
-    protected String nome, endereco, telefone,senha;    
+    protected String nome, endereco, telefone,senha;
     protected ArrayList<Livro> livrosEmprestados =new ArrayList<>();
 
     void setNome(String nome){
@@ -41,8 +41,8 @@ public class Pessoa{
     }
 
     public void recomendar(ArrayList<Livro> livrosEmprestados){
-        int generos=50;
-        int[50] quantidade=0;
+        //int generos=50;
+       // int[50] quantidade=0;
 
         //for(int i=0;i<n;i++){
         //    quantidade[livrosEmprestados[i].getGenero()]++;
