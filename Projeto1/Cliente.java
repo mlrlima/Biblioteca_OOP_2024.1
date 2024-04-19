@@ -1,12 +1,14 @@
+package Biblioteca;
+
 public class Cliente extends Pessoa  {
-    private int idCliente;
+    private String idCliente;
     private ArrayList<Livro> livrosEmprestados;
 
     public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
