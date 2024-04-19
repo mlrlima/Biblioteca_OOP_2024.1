@@ -30,6 +30,15 @@ class BibliotecaMain {
         listaCliente.remove(cliente);
     }
     
+    void interfaceUser(String usuario){
+        System.out.println("----------------------------------------");
+        System.out.println("\tBEM-VINDO, USUARIO!!!");
+        System.out.println("----------------------------------------");
+        System.out.println("\n\t[0] Encerrar \t[1] Pegar livro emprestado \n\t[2] Checar empréstimos \n\t[3] Devolução  ");
+        System.out.println("----------------------------------------");
+        System.out.print("--> ");
+    }
+
     void criarConta(){
         Scanner s=new Scanner(System.in);
     
@@ -90,8 +99,8 @@ class BibliotecaMain {
         System.out.println("\tENTRAR");
         System.out.println("----------------------------------------");
 
+        String usuario;
         do{
-            String usuario;
             boolean existe=false;
             usuario=input.nextLine();
             input.nextLine();
@@ -131,10 +140,12 @@ class BibliotecaMain {
 
 
             if(!existe){
-                System.out.println("\tUsuario não encontrado.");
+                System.out.println("\tSenha incorreta.");
             }
 
         }while(!existe);
+
+        interfaceUser(usuario);
 
     }
 
