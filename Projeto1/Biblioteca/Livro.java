@@ -10,7 +10,7 @@ public class Livro{
         this.titulo=titulo;
     }
     String getTitulo(){
-      return titulo;
+        return titulo;
     }
 
     void setGenero(int genero){

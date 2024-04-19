@@ -36,8 +36,28 @@ public class Pessoa{
         livrosEmprestados.add(livro);
     }
 
-    public void devolverLivro(Livro livro) {
-        livrosEmprestados.remove(livro);
+    public void devolverLivro() {
+        
+        System.out.println("\tLivros Emprestados:");
+
+        for(int i=1; i<=livrosEmprestados.size(); i++){
+
+            System.out.println(i+" - [" + i + "] " + livrosEmprestados.get(i).getTitulo() + " - " + livrosEmprestados.get(i).getAutor());
+        }
+        System.out.println("----------------------------------------");
+        System.out.print("\t Número do livro a Devolver");
+        System.out.println("----------------------------------------");
+        System.out.print("--> ");
+
+        int bookChoice;
+        do{
+            bookChoice = input.nextInt();
+            input.nextLine();
+            bookChoice--;
+
+        }while(bookChoice<0 && bookChoice>=livrosEmprestados.size());
+        
+        livrosEmprestados.remove(bookChoice);
     }
 
     public void recomendar(ArrayList<Livro> livrosEmprestados){

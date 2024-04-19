@@ -12,6 +12,12 @@ class BibliotecaMain {
     ArrayList <Livro> listaLivro = new ArrayList <Livro>();
 
 
+    public void recomendacao(){
+
+
+
+    }
+
     public void addLivro(Livro livro) {
         listaLivro.add(livro);
     }
@@ -29,12 +35,34 @@ class BibliotecaMain {
     }
     
     public void interfaceUser(String usuario){
-        System.out.println("----------------------------------------");
-        System.out.println("\tBEM-VINDO, USUARIO!!!");
-        System.out.println("----------------------------------------");
-        System.out.println("\n\t[0] Encerrar \t[1] Pegar livro emprestado \n\t[2] Checar empréstimos \n\t[3] Devolução  ");
-        System.out.println("----------------------------------------");
-        System.out.print("--> ");
+        Scanner input = new Scanner(System.in);
+        int choice;
+        do{
+            
+            System.out.println("----------------------------------------");
+            System.out.println("\tBEM-VINDO, USUARIO!!!");
+            System.out.println("----------------------------------------");
+            System.out.println("\n\t[0] Encerrar \t[1] Pegar livro emprestado \n\t[2] Checar empréstimos \n\t[3] Devolução");
+            System.out.println("----------------------------------------");
+            System.out.print("--> ");
+            choice = input.nextInt();
+            input.nextLine();
+
+        }while(choice<0 || choice>3);
+
+        switch(choice){
+            case 2:
+                criarConta();
+
+            case 1:
+                entrarConta();
+
+            //DEVOLUÇÃO
+            case 3:
+
+
+        }
+        
     }
 
     static void criarConta(){
@@ -45,7 +73,7 @@ class BibliotecaMain {
         System.out.println("----------------------------------------");
     
         
-        String cpf, nome, senha, endereco, telefone;
+        String id, nome, senha, endereco, telefone;
         
         System.out.println("Digite seu nome: ");
         nome = s.nextLine();
