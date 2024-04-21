@@ -1,4 +1,4 @@
-package Biblioteca;
+package biblioClasses;
 
 public class Bibliotecario extends Pessoa{
     
