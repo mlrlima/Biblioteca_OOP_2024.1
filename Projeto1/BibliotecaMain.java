@@ -14,7 +14,7 @@ class BibliotecaMain {
 
     public void recomendacao(){
 
-
+        //isso nao ta em pessoa?
 
     }
 
@@ -34,7 +34,7 @@ class BibliotecaMain {
         listaCliente.remove(cliente);
     }
     
-    public void interfaceUser(String usuario){
+    public void interfaceUser(int usuario){
         Scanner input = new Scanner(System.in);
         int choice;
         do{
@@ -51,15 +51,38 @@ class BibliotecaMain {
         }while(choice<0 || choice>3);
 
         switch(choice){
-            case 2:
-                criarConta();
-
             case 1:
-                entrarConta();
+                System.out.println("\tLivros Disponiveis:");
+
+                for(int i=1; i<=listaLivro.size(); i++){
+
+                    System.out.println(i+" - [" + i + "] " + listaLivro.get(i).getTitulo() + " - " + listaLivro.get(i).getAutor());
+                }
+                System.out.println("----------------------------------------");
+                System.out.print("\t Número do livro a emprestar: ");
+                System.out.println("----------------------------------------");
+                System.out.print("--> ");
+
+                int bookChoice;
+                do{
+                    bookChoice = input.nextInt();
+                    input.nextLine();
+                    bookChoice--;
+
+                }while(bookChoice<0 && bookChoice>=listaLivro.size());
+
+                listaCliente.get(usuario).emprestarLivro(listaLivro.get(bookChoice));
+
+                System.out.println("----------------------------------------");
+                System.out.print("\t Livro emprestado com sucesso. ");
+                System.out.println("----------------------------------------");
+
+            case 2:
+                listaCliente.get(usuario).printarEmprestimos(); //n sei se eh assim
 
             //DEVOLUÇÃO
             case 3:
-
+                listaCliente.get(usuario).devolverLivro(); //n sei se eh assim
 
         }
         
@@ -80,7 +103,7 @@ class BibliotecaMain {
         s.nextLine();
     
         System.out.println("Digite seu endereco: ");
-        nome = s.nextLine();
+        endereco = s.nextLine();
         s.nextLine();
     
         do{
@@ -128,11 +151,11 @@ class BibliotecaMain {
 
         String usuario;
         do{
+            System.out.println("\tDigite seu CPF: ");
+
             boolean existe=false;
             usuario=input.nextLine();
             input.nextLine();
-
-            System.out.println("\tDigite seu CPF: ");
 
             for(Cliente c:listaCliente){
                 String ID = listaCliente.get(c).getIdCliente();
@@ -149,13 +172,16 @@ class BibliotecaMain {
 
         }while(!existe);
 
+
+        int indiceUsuario=0;
         do{
+
+            System.out.println("\tDigite sua senha: ");
+
             String senha;
             boolean existe=false;
             senha=input.nextLine();
             input.nextLine();
-
-            System.out.println("\tDigite sua senha: ");
 
             for(Cliente c:listaCliente){
                 String s = listaCliente.get(c).getSenha();
@@ -163,6 +189,7 @@ class BibliotecaMain {
                     existe=true;
                     break;
                 }
+                indiceUsuario++;
             }
 
 
@@ -172,7 +199,7 @@ class BibliotecaMain {
 
         }while(!existe);
 
-        interfaceUser(usuario);
+        interfaceUser(indiceUsuario);
 
     }
 

@@ -33,6 +33,7 @@ public class Pessoa{
         return telefone;
     }
     public void emprestarLivro(Livro livro) {
+
         livrosEmprestados.add(livro);
     }
 
@@ -58,6 +59,19 @@ public class Pessoa{
         }while(bookChoice<0 && bookChoice>=livrosEmprestados.size());
         
         livrosEmprestados.remove(bookChoice);
+    }
+
+    public void printarEmprestimos(){
+        if(livrosEmprestados.size()==0){
+            System.out.println("Voce não possui livros emprestados.");
+            return;
+        }
+
+
+        System.out.println("Livros emprestados:");
+        for(int i=1; i<=livrosEmprestados.size(); i++){
+            System.out.println(i+" - [" + i + "] " + livrosEmprestados.get(i).getTitulo() + " - " + livrosEmprestados.get(i).getAutor());
+        }
     }
 
     public void recomendar(ArrayList<Livro> livrosEmprestados){
