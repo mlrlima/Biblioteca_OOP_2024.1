@@ -53,23 +53,30 @@ class BibliotecaMain {
                 System.out.println("\tLivros Disponiveis:");
 
                 for(int i=1; i<=listaLivro.size(); i++){
-
-                    System.out.println(i+" - [" + i + "] " + listaLivro.get(i).getTitulo() + " - " + listaLivro.get(i).getAutor());
+                    if(listaLivro.get(i).getStatus()){
+                        System.out.println(i+" - [" + i + "] " + listaLivro.get(i).getTitulo() + " - " + listaLivro.get(i).getAutor());
+                    }
                 }
-                System.out.println("----------------------------------------");
-                System.out.print("\t Número do livro a emprestar: ");
-                System.out.println("----------------------------------------");
-                System.out.print("--> ");
 
                 int bookChoice;
                 do{
+                    boolean disponivel=true;
+                    System.out.println("----------------------------------------");
+                    System.out.print("\t Número do livro a emprestar: ");
+                    System.out.print("--> ");
                     bookChoice = input.nextInt();
                     input.nextLine();
                     bookChoice--;
 
-                }while(bookChoice<0 && bookChoice>=listaLivro.size());
+                    if(!listaLivro.get(bookChoice).getStatus()){
+                        System.out.print("\t Livro indisponível.");
+                        disponivel=false;
+                    }
+
+                }while(bookChoice<0 && bookChoice>=listaLivro.size() && !disponivel);
 
                 listaCliente.get(usuario).emprestarLivro(listaLivro.get(bookChoice));
+                listaLivro.setEmprestado();
 
                 System.out.println("----------------------------------------");
                 System.out.print("\t Livro emprestado com sucesso. ");
@@ -80,6 +87,7 @@ class BibliotecaMain {
 
             //DEVOLUÇÃO
             case 3:
+                //precisa ainda colocar o ivro devolvido como true na disponibilidade
                 listaCliente.get(usuario).devolverLivro(); //n sei se eh assim
 
         }
