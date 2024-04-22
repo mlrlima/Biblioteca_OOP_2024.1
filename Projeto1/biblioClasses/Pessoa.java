@@ -46,7 +46,7 @@ public class Pessoa{
 
     //criar conta
 
-    public void Registro(ArrayList<Pessoa> pessoas, ArrayList<String> cpfList){
+    public void Registro(ArrayList<Pessoa> userList, ArrayList<String> cpfList){
 
         System.out.println("----------------------------------------");
         System.out.println("\tCRIAÇÃO DE NOVA CONTA");
@@ -86,11 +86,69 @@ public class Pessoa{
         }
 
         cpfList.add(CPF);
+        userList.add(this);
 
 
         System.out.println("----------------------------------------");
         System.out.println("Conta criada com sucesso, seja bem-vindo");
     }
 
+    //entrar em conta
+
+    public Pessoa Login(ArrayList<Pessoa> users){
+
+        int indexConta = -1;
+
+        System.out.println("----------------------------------------");
+        System.out.println("\t\tLOGIN");
+        System.out.println("----------------------------------------");
+        System.out.println("CPF: ");
+
+        String inputCPF = input.nextLine();
+
+        while(indexConta == -1){
+
+            for(int i=0; i < users.size(); i++){
+
+                Pessoa temp = users.get(i);
+
+                if(inputCPF.equals(temp.CPF)){
+
+                    System.out.println("Senha: ");
+                    String inputSenha = input.nextLine();
+
+                    if(inputSenha.equals(temp.senha)){
+
+                        System.out.println("Seja bem-vindo!" );
+                        indexConta = i;
+                    }
+
+                    else{
+                        while(senha.equals(temp.senha) == false){
+                            System.out.println("Senha incorreta, tente novamente:" );
+                            senha = input.nextLine();
+                        }
+                    }    
+                }
+            }
+
+            if(indexConta == -1){
+
+                System.out.println("----------------------------------------");
+                System.out.println("CPF não encontrado, tente novamente" );
+                System.out.println("----------------------------------------");
+                System.out.print("CPF: ");
+                
+                inputCPF = input.nextLine();
+                input.nextLine();
+            }
+        } 
+        
+        Pessoa user = new Pessoa();
+        user = users.get(indexConta);
+
+        return user; 
+
+    }
 }
                 

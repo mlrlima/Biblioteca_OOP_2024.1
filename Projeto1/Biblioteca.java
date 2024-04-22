@@ -13,19 +13,27 @@ public class Biblioteca {
 
         //Array de livros disponíveis (fazer!)
 
-        while(true){
+        Menu myMenu = new Menu();
 
-            Menu myMenu = new Menu();
+        while(true){
 
             switch( myMenu.Reception() ){
 
-                //case 1:   Pessoa user = new Pessoa();   switch(user.Login())  --> admin ou cliente
+                case 1:   
+                    
+                    Cliente user = new Cliente();   
+                
+                    user.Login(userList);
+
+                    break;
 
                 case 2: //Nova Conta
 
-                Cliente novoCliente = new Cliente();
+                    Cliente novoCliente = new Cliente();
 
-                novoCliente.Registro(userList, cpfList);
+                    novoCliente.Registro(userList, cpfList);
+
+                    break;
 
                 case 3: //Encerrar
                     System.exit(0);
