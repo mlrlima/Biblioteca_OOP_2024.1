@@ -99,7 +99,8 @@ public class SistemaBiblioteca {
             "Apologia de Socrates pt. 2 - Maria Luiza",
             "A Íliada - Homero",
             "Teogonia  - Hesiodo",
-            
+            "A Bíblia - Deus"
+
             
         };
 
@@ -176,10 +177,13 @@ public class SistemaBiblioteca {
 
         boolean loop = true;
         while (loop) {
+            
+            
             System.out.println("-----------------------------");
-            System.out.println("0. Sair");
-            System.out.println("1. Adicionar livro.");
-            System.out.println("2. Exibir acervo.");
+            System.out.println("\tBEM-VINDO, FUNCIONÁRIO!!!");
+            System.out.println("[0] Encerrar");
+            System.out.println("[1] Adicionar livro.");
+            System.out.println("[2] Exibir acervo.");
             System.out.println("----------------------------");
 
             int escolha = scanner.nextInt();
