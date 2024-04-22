@@ -5,6 +5,7 @@ public class Livro{
     protected int genero;
     protected boolean status; //true== disponivel / false== emprestado
     double rating;
+    double totalRating;
 
     void setTitulo(String titulo){
         this.titulo=titulo;
@@ -42,5 +43,18 @@ public class Livro{
     }
     boolean getStatus(){
         return status;
+    }
+
+    void setRating(double rating){
+        this.rating += rating;
+        this.totalRating++;
+    }
+    double getRating(){
+        return rating/total;
+    }
+
+    void incializarRating(){
+        this.rating = 0
+        this.totalRating = 0
     }
 }
