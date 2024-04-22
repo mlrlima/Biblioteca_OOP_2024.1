@@ -1,4 +1,5 @@
 import Biblioteca.*
+import BibliotecaMain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -6,7 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-public class SistemaBiblioteca {
+public class SistemaBiblioteca extends Livro {
     private List<Livro> acervo;
     private int contadorLivros;
 
@@ -99,7 +100,9 @@ public class SistemaBiblioteca {
             "Apologia de Socrates pt. 2 - Maria Luiza",
             "A Íliada - Homero",
             "Teogonia  - Hesiodo",
-            "A Bíblia - Deus"
+            "A Bíblia - Deus",
+            "Biblioteca de Alexandria – As Histórias da Maior Biblioteca da Antiguidade - Derek Adie Flower",
+            "O Grimório - ERROR!"
 
             
         };
@@ -140,8 +143,11 @@ public class SistemaBiblioteca {
         String id = gerarIdUnico(autor, titulo);
         livro.setAutor(autor);
         livro.setId(id);
+        livro.inicializarRating();
+        livro.setDisponivel();
         acervo.add(livro);
         contadorLivros++;
+        
     }
 
     private String gerarIdUnico(String autor, String titulo) {
@@ -199,6 +205,9 @@ public class SistemaBiblioteca {
                 case 2:
                     sistema.exibirAcervo();
                     break;
+                case 3:
+                    System.out.print(listaCliente);
+
                 default:
                     System.out.println("Opção inválida.");
             }
