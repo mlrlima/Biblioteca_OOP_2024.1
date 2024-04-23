@@ -98,7 +98,8 @@ public class SistemaBiblioteca extends Livro {
             "Teogonia  - Hesiodo",
             "A Bíblia - Deus",
             "Biblioteca de Alexandria – As Histórias da Maior Biblioteca da Antiguidade - Derek Adie Flower",
-            "O Grimório - ERROR!"
+            "O Grimório - ERROR!",
+            "30 minutos dizem tudo - Matheus Veríssimo"
 
             
         };
