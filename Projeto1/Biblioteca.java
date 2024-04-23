@@ -2,16 +2,18 @@ import java.util.*;
 import biblioClasses.*;
 @SuppressWarnings("unused")
 
-public class Biblioteca {
+public class Biblioteca  {
     public static void main(String[] args) {
         
         //Array list de referencia aos objetos tipo Cliente
-        ArrayList<Pessoa> userList = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> userList = new ArrayList<>();
 
+        
         Bibliotecario admin = new Bibliotecario();
         admin.setCPF("00000000000");
         admin.setSenha("12345678");
         userList.add(admin);
+        
 
         //Array list de referencia aos CPFs existentes
         ArrayList<String> cpfList = new ArrayList<String>();
@@ -26,20 +28,30 @@ public class Biblioteca {
 
                 case 1: //Login
                     
-                    Pessoa user = new Pessoa();   
+                    Cliente user = new Cliente();
+                    int index = user.Login(userList);
                 
-                    if ( user.Login(userList) instanceof Cliente){
+                    if ( userList.get(index) instanceof Cliente){
 
-                        System.out.println("Bem-vindo cliente");
+                        //System.out.println(userList.get(index).getCPF());
+                        //System.out.println(userList.get(index).getNome());
 
-                        myMenu.interfaceUser(user);
+                        switch(myMenu.MenuCliente(userList.get(index))){
 
-                        //user.Devolver();
+                            case 3: //Devolucao
+                            
+                                userList.get(index).Devolver();
+
+                                break;
+
+                        }
+
                     }
 
-                    else
+                    else{
                         System.out.println("Bem-vindo bibliotecario");
                     
+                    }
 
                     break;
 
@@ -53,6 +65,7 @@ public class Biblioteca {
 
                 case 3: //Encerrar
                     System.exit(0);
+
             }
         }
     }

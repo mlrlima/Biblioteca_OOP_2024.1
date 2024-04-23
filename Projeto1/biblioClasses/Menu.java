@@ -24,16 +24,16 @@ public class Menu {
         return choice;
     }
     
-    public int interfaceUser(Pessoa user) {
+    public int MenuCliente(Pessoa user) {
 
         int choice;
         do{
             
 
             System.out.println("----------------------------------------");
-            System.out.println("\tBEM-VINDO !!!");
+            System.out.println("- Usuário: " + user.getNome());
             System.out.println("----------------------------------------");
-            System.out.println("\n\t[0] Encerrar \t[1] Pegar livro emprestado \n\t[2] Checar empréstimos \n\t[3] Devolução");
+            System.out.println("\t[1] Pegar livro emprestado \n\t[2] Checar empréstimos \n\t[3] Devolução \n\t[4] Encerrar ");
             System.out.println("----------------------------------------");
             System.out.print("--> ");
             choice = input.nextInt();
