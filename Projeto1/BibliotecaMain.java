@@ -9,13 +9,6 @@ class BibliotecaMain {
     ArrayList <Cliente> listaCliente = new ArrayList <Cliente>();
     ArrayList <Livro> listaLivro = new ArrayList <Livro>();
 
-
-    public void recomendacao(){
-
-        //isso nao ta em pessoa?
-
-    }
-
     public void addLivro(Livro livro) {
         listaLivro.add(livro);
     }
@@ -74,6 +67,8 @@ class BibliotecaMain {
                     }
 
                 }while(bookChoice<0 && bookChoice>=listaLivro.size() && !disponivel);
+
+                if(bookChoice==){}
 
                 listaCliente.get(usuario).emprestarLivro(listaLivro.get(bookChoice));
                 listaLivro.setEmprestado();
@@ -235,7 +230,7 @@ class BibliotecaMain {
             switch(choice){
                 case 2:
                     criarConta();
-
+p
                 case 1:
                     entrarConta();
             }

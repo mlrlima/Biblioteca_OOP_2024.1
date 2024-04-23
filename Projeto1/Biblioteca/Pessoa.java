@@ -75,12 +75,8 @@ public class Pessoa{
     }
 
     public void recomendar(ArrayList<Livro> livrosEmprestados){
-        //int generos=50;
-       // int[50] quantidade=0;
-
-        //for(int i=0;i<n;i++){
-        //    quantidade[livrosEmprestados[i].getGenero()]++;
-        //}
+        
     }
-}
+    
+
                 

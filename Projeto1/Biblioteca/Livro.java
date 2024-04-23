@@ -2,7 +2,7 @@ package Biblioteca;
 
 public class Livro{
     protected String titulo, autor, id;
-    protected int genero;
+    protected int genero; //1- aventura, 2-misterio, 3- romance, 4- nao-ficcao, 5- sci-fi, 6- horror, 7- drama
     protected boolean status; //true== disponivel / false== emprestado
     double rating;
     double totalRating;

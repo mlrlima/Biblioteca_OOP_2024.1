@@ -16,7 +16,7 @@ public class SistemaBiblioteca extends Livro {
     private void acervoInicial() {
         String[] livrosIniciais = {
             
-            "Dom Casmurro - Machado de Assis",
+            "Dom Casmurro - Machado de Assis", 
             "Capitães de Areia - Jorge Amado",
             "Vidas Secas - Graciliano Ramos",
             "O Cortiço - Aluísio Azevedo",
@@ -99,7 +99,12 @@ public class SistemaBiblioteca extends Livro {
             "A Bíblia - Deus",
             "Biblioteca de Alexandria – As Histórias da Maior Biblioteca da Antiguidade - Derek Adie Flower",
             "O Grimório - ERROR!",
-            "30 minutos dizem tudo - Matheus Veríssimo"
+            "30 minutos dizem tudo - Matheus Veríssimo",
+            "Memórias Póstumas de Brás Cubas - Machado de Assis",
+            "A Morte de Ivan Ilitch - Liev Tolstói",
+            "O Mundo de Sofia - Jostein Gaarden",
+            "O Gato Preto - Edgar Allan Poe"
+            "O Morro dos Ventos Uivantes - Emily Bronté"
 
             
         };
@@ -129,18 +134,19 @@ public class SistemaBiblioteca extends Livro {
              titulo = palavrasTitulo[1];
         }
         
-        adicionarLivro(partes[1],titulo, partes[0]);
+        adicionarLivro(genero, partes[1],titulo, partes[0]);
         }
     }
 
 
-    public void adicionarLivro(String autor, String titulo, String tituloOriginal) {
+    public void adicionarLivro(int genero, String autor, String titulo, String tituloOriginal) {
         Livro livro = new Livro();
         livro.setTitulo(tituloOriginal);
         String id = gerarIdUnico(autor, titulo);
         livro.setAutor(autor);
         livro.setId(id);
         livro.inicializarRating();
+        livro.setGenero(genero);
         livro.setDisponivel();
         acervo.add(livro);
         contadorLivros++;
@@ -160,7 +166,8 @@ public class SistemaBiblioteca extends Livro {
         String letraSobrenome = sobrenome.substring(0, 1).toUpperCase();
         String letraTitulo = titulo.substring(0, 1).toUpperCase();
         String sequencial = String.format("%04d", contadorLivros);
-        return letraSobrenome + letraTitulo + sequencial;
+        int numGenero = genero;
+        return letraSobrenome + letraTitulo + sequencial + numGenero;
     }
 
     public void exibirAcervo() {
@@ -169,7 +176,7 @@ public class SistemaBiblioteca extends Livro {
         
         for (Livro livro : acervo) {
             System.out.println(" ");
-            System.out.println("ID: " + livro.getId() + ", Autor: " + livro.getAutor() + ", Título: " + livro.getTitulo());
+            System.out.println("ID: " + livro.getId() + ", Autor: " + livro.getAutor() + ", Título: " + livro.getTitulo() + "Gênero: " + livro.getGenero());
             System.out.println(" ");
         }
     }
@@ -222,6 +229,11 @@ public class SistemaBiblioteca extends Livro {
         System.out.println("-----------------------");
         System.out.println("Título do livro: \n--->");
         String titulo = scanner.nextLine();
+        System.out.println("-----------------------");
+        System.out.println("Genero do livro: \n---> ");
+        int genero = scanner.nextInt();
+
+
         String[] palavrasTitulo = titulo.trim().toLowerCase().split("\\s+");
         tituloOriginal = titulo;
         String[] palavrasDefinicao = {"the", "a", "o", "os"};
@@ -238,7 +250,7 @@ public class SistemaBiblioteca extends Livro {
              titulo = palavrasTitulo[1];
         }
 
-        adicionarLivro(autor, titulo, tituloOriginal);
+        adicionarLivro(genero, autor, titulo, tituloOriginal);
         System.out.println(" ");
         System.out.println("Livro adicionado com Sucesso.");
         System.out.println("-------------------------------");
