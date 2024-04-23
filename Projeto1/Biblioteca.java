@@ -28,12 +28,18 @@ public class Biblioteca {
                     
                     Pessoa user = new Pessoa();   
                 
-                    if ( user.Login(userList) instanceof Cliente)
+                    if ( user.Login(userList) instanceof Cliente){
 
                         System.out.println("Bem-vindo cliente");
 
+                        myMenu.interfaceUser(user);
+
+                        //user.Devolver();
+                    }
+
                     else
                         System.out.println("Bem-vindo bibliotecario");
+                    
 
                     break;
 

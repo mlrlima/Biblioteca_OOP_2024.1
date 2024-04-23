@@ -1,16 +1,6 @@
 package biblioClasses;
-import java.util.ArrayList;
 
 public class Cliente extends Pessoa  {
-
-    //ATRIBUTOS
-    private ArrayList<Livro> BorrowedList = new ArrayList<Livro>();
-
-    //getters e setters
-
-    public ArrayList<Livro> getEmprestados() {
-        return BorrowedList;
-    }
 
     //EMPRESTAR
 
