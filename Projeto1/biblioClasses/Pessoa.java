@@ -143,12 +143,8 @@ public class Pessoa{
                 input.nextLine();
             }
         } 
-        
-        Pessoa user = new Pessoa();
-        user = users.get(indexConta);
 
-        return user; 
-
+        return users.get(indexConta); 
     }
 }
                 

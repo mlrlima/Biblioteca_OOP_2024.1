@@ -8,6 +8,11 @@ public class Biblioteca {
         //Array list de referencia aos objetos tipo Cliente
         ArrayList<Pessoa> userList = new ArrayList<Pessoa>();
 
+        Bibliotecario admin = new Bibliotecario();
+        admin.setCPF("00000000000");
+        admin.setSenha("12345678");
+        userList.add(admin);
+
         //Array list de referencia aos CPFs existentes
         ArrayList<String> cpfList = new ArrayList<String>();
 
@@ -19,15 +24,20 @@ public class Biblioteca {
 
             switch( myMenu.Reception() ){
 
-                case 1:   
+                case 1: //Login
                     
-                    Cliente user = new Cliente();   
+                    Pessoa user = new Pessoa();   
                 
-                    user.Login(userList);
+                    if ( user.Login(userList) instanceof Cliente)
+
+                        System.out.println("Bem-vindo cliente");
+
+                    else
+                        System.out.println("Bem-vindo bibliotecario");
 
                     break;
 
-                case 2: //Nova Conta
+                case 2: //Nova Conta (Cliente)
 
                     Cliente novoCliente = new Cliente();
 
