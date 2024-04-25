@@ -36,15 +36,7 @@ public class Biblioteca  {
                         //System.out.println(userList.get(index).getCPF());
                         //System.out.println(userList.get(index).getNome());
 
-                        switch(myMenu.MenuCliente(userList.get(index))){
-
-                            case 3: //Devolucao
-                            
-                                userList.get(index).Devolver();
-
-                                break;
-
-                        }
+                        myMenu.MenuCliente(userList.get(index));
 
                     }
 

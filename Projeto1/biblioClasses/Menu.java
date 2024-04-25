@@ -20,27 +20,46 @@ public class Menu {
 
         int choice = input.nextInt();
         input.nextLine();
+        System.out.print("\033\143");
 
         return choice;
     }
     
-    public int MenuCliente(Pessoa user) {
+    public void MenuCliente(Pessoa user) {
 
+        boolean menu = true;
         int choice;
-        do{
+
+        while(menu) {
+
+            do{
+                
+                System.out.println("----------------------------------------");
+                System.out.println("- Usuário: " + user.getNome());
+                System.out.println("----------------------------------------");
+                System.out.println("\t[1] Pegar livro emprestado \n\t[2] Checar empréstimos \n\t[3] Devolução \n\t[4] Logout ");
+                System.out.println("----------------------------------------");
+                System.out.print("--> ");
+                choice = input.nextInt();
+                input.nextLine();
+                System.out.print("\033\143");
+
+            } while(choice<0 || choice>4);
+
+            switch(choice){
+
+                case 3: //Devolucao
+                
+                    user.Devolver();
+
+                    break;
+
+                case 4: //Logout
+                    user = null;
+                    menu = false;
+                    break;
+            }
             
-
-            System.out.println("----------------------------------------");
-            System.out.println("- Usuário: " + user.getNome());
-            System.out.println("----------------------------------------");
-            System.out.println("\t[1] Pegar livro emprestado \n\t[2] Checar empréstimos \n\t[3] Devolução \n\t[4] Encerrar ");
-            System.out.println("----------------------------------------");
-            System.out.print("--> ");
-            choice = input.nextInt();
-            input.nextLine();
-
-        } while(choice<0 || choice>3);
-
-        return choice;
+        }
     }
 }

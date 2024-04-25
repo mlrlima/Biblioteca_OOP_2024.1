@@ -49,24 +49,45 @@ public class Pessoa{
         return BorrowedList;
     }
 
-        //entrar em conta
+    //entrar em conta
 
-        public int Login(ArrayList<Pessoa> users){
+    public int Login(ArrayList<Pessoa> users){
 
-            int indexConta = -1;
-    
-            System.out.println("----------------------------------------");
-            System.out.println("\t\tLOGIN");
-            System.out.println("----------------------------------------");
-            System.out.println("CPF: ");
-    
-            String inputCPF = input.nextLine();
-            Pessoa temp = new Pessoa();
-    
-            while(indexConta == -1){
-    
+        int indexConta = -1;
+
+        System.out.println("----------------------------------------");
+        System.out.println("\t\tLOGIN");
+        System.out.println("----------------------------------------");
+        System.out.println("CPF: ");
+
+        String inputCPF = input.nextLine();
+        Pessoa temp = new Pessoa();
+
+        while(indexConta == -1){
+
+            for(int i=0; i < users.size(); i++){
+
+                temp = users.get(i);
+
+                if(inputCPF.equals(temp.CPF)){
+                    
+                    indexConta = i;
+                    break;
+                }
+            }
+
+            while (indexConta == -1) {
+
+                System.out.print("\033\143");
+                System.out.println("----------------------------------------");
+                System.out.println("CPF não encontrado, tente novamente" );
+                System.out.println("----------------------------------------");
+                System.out.print("CPF: ");
+                
+                inputCPF = input.nextLine();
+                
                 for(int i=0; i < users.size(); i++){
-    
+
                     temp = users.get(i);
     
                     if(inputCPF.equals(temp.CPF)){
@@ -75,65 +96,51 @@ public class Pessoa{
                         break;
                     }
                 }
-    
-                while (indexConta == -1) {
-    
+                
+            }
+
+            System.out.println("Senha: ");
+            String inputSenha = input.nextLine();
+
+            if(inputSenha.equals(temp.senha)){
+
+                System.out.print("\033\143");
+                System.out.println("----------------------------------------");
+                System.out.println("\tSeja bem-vindo!" );
+
+                break;
+            }
+
+
+            else{
+                while(inputSenha.equals(temp.senha) == false){
+                    System.out.print("\033\143");
+                    System.out.println("Senha incorreta, tente novamente:" );
                     System.out.println("----------------------------------------");
-                    System.out.println("CPF não encontrado, tente novamente" );
-                    System.out.println("----------------------------------------");
-                    System.out.print("CPF: ");
-                    
-                    inputCPF = input.nextLine();
-                    
-                    for(int i=0; i < users.size(); i++){
-    
-                        temp = users.get(i);
-        
-                        if(inputCPF.equals(temp.CPF)){
-                            
-                            indexConta = i;
-                            break;
-                        }
-                    }
-                    
+                    System.out.println("Senha: ");
+
+                    inputSenha = input.nextLine();
+                    System.out.print("\033\143");
                 }
-    
-                System.out.println("Senha: ");
-                String inputSenha = input.nextLine();
-    
-                if(inputSenha.equals(temp.senha)){
-    
-                    System.out.println("Seja bem-vindo!" );
-    
-                    break;
-                }
-    
-    
-                else{
-                    while(inputSenha.equals(temp.senha) == false){
-                        System.out.println("Senha incorreta, tente novamente:" );
-                        System.out.println("----------------------------------------");
-                        System.out.println("Senha: ");
-    
-                        inputSenha = input.nextLine();
-                    }
-    
-                    break;
-                }    
-    
-            }  
-    
-            return indexConta;
-        }
+
+                System.out.print("\033\143");
+                System.out.println("----------------------------------------");
+                System.out.println("\tSeja bem-vindo!" );
+
+                break;
+            }    
+
+        }  
+
+        return indexConta;
+    }
 
     //devolver livro
 
     public void Devolver() {
 
-        System.out.println(BorrowedList.size());
-
         if(BorrowedList.size()==0){
-            System.out.println("Voce não possui livros emprestados.\n");
+            System.out.println("Voce não possui livros emprestados.");
             return;
         }
         
@@ -158,9 +165,8 @@ public class Pessoa{
 
         }while(bookChoice<0 && bookChoice>=BorrowedList.size());
         
-        BorrowedList.remove(bookChoice);
-
         BorrowedList.get(bookChoice).setDisponivel();
+        BorrowedList.remove(bookChoice);
     }
 
     public void printarEmprestimos(){

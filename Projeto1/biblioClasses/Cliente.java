@@ -10,47 +10,6 @@ public class Cliente extends Pessoa  {
         BorrowedList.add(livro);
     }
 
-    //DEVOLVER
-
-    public void Devolver() {
-        
-        System.out.println("\tLivros Emprestados:");
-
-        for(int i=1; i<=BorrowedList.size(); i++){
-
-            System.out.println(i+" - [" + i + "] " + BorrowedList.get(i).getTitulo() + " - " + 
-            BorrowedList.get(i).getAutor());
-        }
-
-        System.out.println("----------------------------------------");
-        System.out.print("\t Número do livro a Devolver");
-        System.out.println("----------------------------------------");
-        System.out.print("--> ");
-
-        int bookChoice;
-        do{
-            bookChoice = input.nextInt();
-            input.nextLine();
-            bookChoice--;
-
-        }while(bookChoice<0 && bookChoice>=BorrowedList.size());
-        
-        BorrowedList.remove(bookChoice);
-    }
-
-    public void printarEmprestimos(){
-
-        if(BorrowedList.size()==0){
-            System.out.println("Voce não possui livros emprestados.");
-            return;
-        }
-
-
-        System.out.println("Livros emprestados:");
-        for(int i=1; i<=BorrowedList.size(); i++){
-            System.out.println(i+" - [" + i + "] " + BorrowedList.get(i).getTitulo() + " - " + BorrowedList.get(i).getAutor());
-        }
-    }
 
     //criar conta
 
@@ -73,6 +32,7 @@ public class Cliente extends Pessoa  {
 
         while (cpfList.contains(CPF) || CPF.length() != 11){
 
+            System.out.print("\033\143");
             System.out.println("----------------------------------------");
             System.out.println("CPF inválido ou já cadastrado");
             System.out.println("----------------------------------------");
@@ -84,13 +44,16 @@ public class Cliente extends Pessoa  {
 
         System.out.println("Senha: ");
         senha = input.nextLine();
+        System.out.print("\033\143");
 
         while (senha.length() < 8 || senha.length() > 20){
+            System.out.print("\033\143");
             System.out.println("----------------------------------------");
             System.out.println("Tamanho de senha inválido, tente denovo");
             System.out.println("----------------------------------------");
             System.out.println("Senha: ");
             senha = input.nextLine();
+            System.out.print("\033\143");
         }
 
         this.setNome(nome);
@@ -105,5 +68,3 @@ public class Cliente extends Pessoa  {
     }
 
 }
-    
-            

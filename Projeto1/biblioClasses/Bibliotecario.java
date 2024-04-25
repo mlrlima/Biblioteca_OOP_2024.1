@@ -64,16 +64,14 @@ public class Bibliotecario extends Pessoa{
 
     public void Devolver(ArrayList<String> cpfList) {
 
-
-
-        while (cpfList.contains(ClientCPF) || ClientCPF.length() != 11){
+        /* while (cpfList.contains(ClientCPF) || ClientCPF.length() != 11){
 
             System.out.println("----------------------------------------");
             System.out.println("CPF inválido ou já cadastrado");
             System.out.println("----------------------------------------");
             System.out.println("CPF: ");
             ClientCPF = input.nextLine();           
-        }
+        }*/
 
         if(BorrowedList.size()==0){
             System.out.println("Voce não possui livros emprestados.\n");
