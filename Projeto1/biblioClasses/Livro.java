@@ -1,12 +1,11 @@
 package biblioClasses;
 
-
-public class Livro {
+public class Livro implements java.io.Serializable {
     
     //ATRIBUTOS
 
-    private String titulo, autor, id;
-    private int genero;
+    private String titulo, autor;
+    private int genero, code;
     private boolean status; //true== disponivel / false== emprestado
     private double rating;
 
@@ -26,11 +25,11 @@ public class Livro {
         return autor;
     }
 
-    public void setId(String id){
-        this.id=id;
+    public void setCode(int code){
+        this.code = code;
     }
-    public String getId(){
-        return id;
+    public int getCode(){
+        return code;
     }
 
     public void setGenero(int genero){
@@ -40,16 +39,23 @@ public class Livro {
         return genero;
     }
 
-    public void setDisponivel(){
-        this.status= true;
-    }
-    public void setEmprestado(){
-        this.status= false;
-    }
     public boolean getStatus(){
         return status;
     }
+    public void switchStatus(){
 
+        if (status){
+            this.status= false;
+        }
+        
+        else{
+            this.status= true;
+        }
+    }
+
+    public void setRating(double rating){
+        this.rating = rating;
+    }
     public double getRating(){
         return rating;
     }

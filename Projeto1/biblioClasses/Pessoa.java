@@ -1,11 +1,11 @@
 package biblioClasses;
 import java.util.*;
 
-public class Pessoa{
+public class Pessoa implements java.io.Serializable{
 
     //ATRIBUTOS
     protected String nome, CPF, senha, endereco, telefone;
-    Scanner input = new Scanner(System.in);
+    transient Scanner input = new Scanner(System.in);
     protected ArrayList<Livro> BorrowedList = new ArrayList<Livro>();
 
     //getters e setters
@@ -49,7 +49,7 @@ public class Pessoa{
         return BorrowedList;
     }
 
-    //entrar em conta
+    //Entrar em conta
 
     public int Login(ArrayList<Pessoa> users){
 
@@ -69,7 +69,7 @@ public class Pessoa{
 
                 temp = users.get(i);
 
-                if(inputCPF.equals(temp.CPF)){
+                if(inputCPF.equals(temp.getCPF())){
                     
                     indexConta = i;
                     break;
@@ -135,15 +135,28 @@ public class Pessoa{
         return indexConta;
     }
 
-    //devolver livro
+    //Emprestimo (a fazer!!!)
 
-    public void Devolver() {
+    public void Emprestar(ArrayList<Livro> disponiveis){
+
+        if(BorrowedList.size() >= 6){
+            System.out.println("Você atingiu número máximo de livros");
+            return;
+        }
+
+        
+
+    }
+
+    //Devolucao
+
+    public void Devolver(int code) {
 
         if(BorrowedList.size()==0){
             System.out.println("Voce não possui livros emprestados.");
             return;
         }
-        
+
         System.out.println("\tLivros Emprestados:");
 
         for(int i=1; i<=BorrowedList.size(); i++){
@@ -165,22 +178,9 @@ public class Pessoa{
 
         }while(bookChoice<0 && bookChoice>=BorrowedList.size());
         
-        BorrowedList.get(bookChoice).setDisponivel();
+        
+        BorrowedList.get(bookChoice).switchStatus();
         BorrowedList.remove(bookChoice);
-    }
-
-    public void printarEmprestimos(){
-
-        if(BorrowedList.size()==0){
-            System.out.println("Voce não possui livros emprestados.");
-            return;
-        }
-
-        System.out.println("Livros emprestados:");
-
-        for(int i=1; i<=BorrowedList.size(); i++){
-            System.out.println(i+" - [" + i + "] " + BorrowedList.get(i).getTitulo() + " - " + BorrowedList.get(i).getAutor());
-        }
     }
 
 }

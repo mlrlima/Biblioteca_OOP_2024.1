@@ -1,12 +1,12 @@
 
-//!!!AVALIAR SE A CLASSE MENU REALMENTE EH NECESSARIA!!!
 
 package biblioClasses;
 import java.util.*;
 
 public class Menu {
+
     
-    Scanner input = new Scanner(System.in);
+    transient Scanner input = new Scanner(System.in);
 
     public int Reception(){
         
@@ -36,8 +36,13 @@ public class Menu {
                 
                 System.out.println("----------------------------------------");
                 System.out.println("- Usuário: " + user.getNome());
+                System.out.println("- Livros Emprestados: " + user.getEmprestados().size());
                 System.out.println("----------------------------------------");
-                System.out.println("\t[1] Pegar livro emprestado \n\t[2] Checar empréstimos \n\t[3] Devolução \n\t[4] Logout ");
+                System.out.println(
+                "\t[1] Pegar livro emprestado \n\t" 
+                + "[2] Checar empréstimos \n\t"
+                + "[3] Devolução \n\t"
+                + "[4] Logout ");
                 System.out.println("----------------------------------------");
                 System.out.print("--> ");
                 choice = input.nextInt();
@@ -48,9 +53,24 @@ public class Menu {
 
             switch(choice){
 
+                case 1: //Pegar emprestado
+
+                case 2:
+
+                    System.out.println("\tLivros Emprestados:");
+
+                    for(int i=1; i<=user.BorrowedList.size(); i++){
+
+                        System.out.println(i+" - [" + i + "] " + 
+                        user.BorrowedList.get(i).getTitulo() + " - " + 
+                        user.BorrowedList.get(i).getAutor());
+                    }
+
+                    break;
+
                 case 3: //Devolucao
                 
-                    user.Devolver();
+                    //user.Devolver();
 
                     break;
 
@@ -62,4 +82,8 @@ public class Menu {
             
         }
     }
+
+    //Fazer menu admin
+
+
 }

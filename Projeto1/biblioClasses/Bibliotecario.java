@@ -57,51 +57,36 @@ public class Bibliotecario extends Pessoa{
         return indexConta;
     }
 
+    //Adiciona novo livro a base de dados
 
-
-
-    //Bibliotecario devolve livro p cliente
-
-    public void Devolver(ArrayList<String> cpfList) {
-
-        /* while (cpfList.contains(ClientCPF) || ClientCPF.length() != 11){
-
-            System.out.println("----------------------------------------");
-            System.out.println("CPF inválido ou já cadastrado");
-            System.out.println("----------------------------------------");
-            System.out.println("CPF: ");
-            ClientCPF = input.nextLine();           
-        }*/
-
-        if(BorrowedList.size()==0){
-            System.out.println("Voce não possui livros emprestados.\n");
-            return;
-        }
-        
-        System.out.println("\tLivros Emprestados:");
-
-        for(int i=1; i<=BorrowedList.size(); i++){
-
-            System.out.println(" - [" + i + "] " + BorrowedList.get(i).getTitulo() + " - " + BorrowedList.get(i).getAutor());
-        }
+    public void newBook(ArrayList<Livro> livros){
 
         System.out.println("----------------------------------------");
-        System.out.println("\t Número do livro a Devolver\n");
+        System.out.println("\t Registrar novo livro");
         System.out.println("----------------------------------------");
-        System.out.print("--> ");
 
-        int bookChoice;
+        Livro newbook = new Livro();
 
-        do{
-            bookChoice = input.nextInt();
-            input.nextLine();
-            bookChoice--;
+        String textinput;
 
-        }while(bookChoice<0 && bookChoice>=BorrowedList.size());
+        System.out.println("título:");
+        textinput = input.nextLine();
+        newbook.setTitulo(textinput);
+
+        System.out.println("autor:");
+        textinput = input.nextLine();
+        newbook.setTitulo(textinput);
         
-        BorrowedList.get(bookChoice).setDisponivel();
-        BorrowedList.remove(bookChoice);
+        System.out.println("genero (codigo):");
+        int newgenero = input.nextInt();
+        input.nextLine();
+        newbook.setGenero(newgenero);
+
+        livros.add(newbook);
+
     }
 
+
+    
 
 }
