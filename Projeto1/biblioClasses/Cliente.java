@@ -3,15 +3,8 @@ import java.util.ArrayList;
 
 public class Cliente extends Pessoa  {
 
-    //EMPRESTAR
 
-    public void Emprestar(Livro livro) {
-
-        BorrowedList.add(livro);
-    }
-
-
-    //criar conta
+    //NOVA CONTA
 
     public void Registro(ArrayList<Pessoa> userList, ArrayList<String> cpfList){
 

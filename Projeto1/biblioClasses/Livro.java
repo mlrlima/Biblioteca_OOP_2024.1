@@ -9,6 +9,11 @@ public class Livro implements java.io.Serializable {
     private boolean status; //true== disponivel / false== emprestado
     private double rating;
 
+    /* CÓDIGOS DE GÊNERO
+     * 1 - 
+     */
+
+
     //getters e setters
 
     public void setTitulo(String titulo){
@@ -41,6 +46,9 @@ public class Livro implements java.io.Serializable {
 
     public boolean getStatus(){
         return status;
+    }
+    public void setStatus(){
+        this.status = true;
     }
     public void switchStatus(){
 

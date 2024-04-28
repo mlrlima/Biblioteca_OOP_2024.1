@@ -49,7 +49,7 @@ public class Pessoa implements java.io.Serializable{
         return BorrowedList;
     }
 
-    //Entrar em conta
+    //LOGIN
 
     public int Login(ArrayList<Pessoa> users){
 
@@ -135,49 +135,43 @@ public class Pessoa implements java.io.Serializable{
         return indexConta;
     }
 
-    //Emprestimo (a fazer!!!)
+    //EMPRESTIMO
 
-    public void Emprestar(ArrayList<Livro> disponiveis){
+    public void Emprestar(ArrayList<Livro> livros, int choiceCode){
 
         if(BorrowedList.size() >= 6){
-            System.out.println("Você atingiu número máximo de livros");
+            System.out.println("Você já atingiu número máximo de livros");
             return;
         }
 
-        
+        if(livros.size() == 0){
+            System.out.println("----------------------------------------");
+            System.out.println("\tAinda não há livros");
+            System.out.println("----------------------------------------");
+            return;
+        }
+
+
+        if(livros.get(choiceCode).getStatus() == true){
+
+            System.out.println("----------------------------------------");
+            System.out.println("\tLivro emprestado com sucesso!");
+            System.out.println(livros.get(choiceCode).getTitulo());
+
+            this.getEmprestados().add(livros.get(choiceCode));
+            livros.get(choiceCode).switchStatus();
+        }
+
+        else{
+            System.out.println("----------------------------------------");
+            System.out.println("Livro indisponível ou inexistente");
+        }
 
     }
 
-    //Devolucao
+    //DEVOLUCAO
 
-    public void Devolver(int code) {
-
-        if(BorrowedList.size()==0){
-            System.out.println("Voce não possui livros emprestados.");
-            return;
-        }
-
-        System.out.println("\tLivros Emprestados:");
-
-        for(int i=1; i<=BorrowedList.size(); i++){
-
-            System.out.println(" - [" + i + "] " + BorrowedList.get(i).getTitulo() + " - " + BorrowedList.get(i).getAutor());
-        }
-
-        System.out.println("----------------------------------------");
-        System.out.println("\t Número do livro a Devolver\n");
-        System.out.println("----------------------------------------");
-        System.out.print("--> ");
-
-        int bookChoice;
-
-        do{
-            bookChoice = input.nextInt();
-            input.nextLine();
-            bookChoice--;
-
-        }while(bookChoice<0 && bookChoice>=BorrowedList.size());
-        
+    public void Devolver(int bookChoice) {
         
         BorrowedList.get(bookChoice).switchStatus();
         BorrowedList.remove(bookChoice);

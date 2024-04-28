@@ -14,14 +14,18 @@ public class Biblioteca  {
         ArrayList<String> cpfList = DeserializeCPF();
         ArrayList<Livro> bookList = DeserializeLivro();
 
-        System.out.println(cpfList.get(0));
-
         /* 
-        Bibliotecario admin = new Bibliotecario();
-        admin.setCPF("00000000000");
-        admin.setSenha("12345678");
-        userList.add(admin);
+        System.out.println(bookList.get(0).getTitulo());
+        System.out.println(bookList.get(0).getAutor());
+        System.out.println(bookList.get(0).getStatus());
         */
+ 
+        Bibliotecario admin = new Bibliotecario();
+        if (userList.size() == 0){
+            admin.setCPF("00000000000");
+            admin.setSenha("12345678");
+            userList.add(admin);
+        }
 
         Menu myMenu = new Menu();
         boolean biblioteca = true;
@@ -37,17 +41,16 @@ public class Biblioteca  {
                 
                     if ( userList.get(index) instanceof Cliente){
 
-                        //System.out.println(userList.get(index).getCPF());
-                        //System.out.println(userList.get(index).getNome());
-
-                        myMenu.MenuCliente(userList.get(index));
+                        myMenu.MenuCliente(userList.get(index), bookList);
 
                     }
 
                     else{
-                        System.out.println("Bem-vindo bibliotecario");
-                    
+                        System.out.println("\t MODO ADMINISTRADOR");
+                        myMenu.MenuAdmin(admin, bookList, userList);
                     }
+
+                    Serialize(userList, bookList, cpfList);
 
                     break;
 
@@ -70,8 +73,6 @@ public class Biblioteca  {
 
     
     //Metodo para a serializacao de objetos!!!
-    //ArrayList<Pessoa> userList
-    //ArrayList<Livro> bookList 
     
     static void Serialize(ArrayList<Pessoa> userList, ArrayList<Livro> bookList, 
     ArrayList<String> cpfList){

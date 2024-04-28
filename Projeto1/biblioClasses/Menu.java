@@ -5,8 +5,7 @@ import java.util.*;
 
 public class Menu {
 
-    
-    transient Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
 
     public int Reception(){
         
@@ -25,7 +24,7 @@ public class Menu {
         return choice;
     }
     
-    public void MenuCliente(Pessoa user) {
+    public void MenuCliente(Pessoa user, ArrayList<Livro> bookList) {
 
         boolean menu = true;
         int choice;
@@ -36,13 +35,105 @@ public class Menu {
                 
                 System.out.println("----------------------------------------");
                 System.out.println("- Usuário: " + user.getNome());
-                System.out.println("- Livros Emprestados: " + user.getEmprestados().size());
+                System.out.println("- Livros Emprestados (" + user.getEmprestados().size() + "):\n");
+
+                for(int i=0; i<user.BorrowedList.size(); i++){
+
+                    System.out.println(" -> [" + i + "] " + 
+                    user.BorrowedList.get(i).getTitulo() + " - " + 
+                    user.BorrowedList.get(i).getAutor());
+                }
+
                 System.out.println("----------------------------------------");
                 System.out.println(
-                "\t[1] Pegar livro emprestado \n\t" 
-                + "[2] Checar empréstimos \n\t"
-                + "[3] Devolução \n\t"
-                + "[4] Logout ");
+                "\t[1] Empréstimo \n\t" 
+                + "[2] Devolução \n\t"
+                + "[3] Logout ");
+                System.out.println("----------------------------------------");
+                System.out.print("--> ");
+                choice = input.nextInt();
+                input.nextLine();
+                System.out.print("\033\143");
+
+            } while(choice<0 || choice>4);
+
+            int choiceCode;
+
+            switch(choice) {
+
+                case 1: //Pegar emprestado
+
+                    System.out.println("----------------------------------------");
+                    System.out.println("\tRealizar Empréstimo");
+                    System.out.println("----------------------------------------");
+                    
+                    System.out.print("--> ");
+                    choiceCode = input.nextInt();
+                    input.nextLine();
+                    System.out.print("\033\143");
+
+                    user.Emprestar(bookList, choiceCode);
+
+                    break;
+
+
+                case 2: //Devolucao
+                
+                    if(user.getEmprestados().size()==0){
+                        System.out.println("Voce não possui livros emprestados.");
+                        break;
+                    }
+
+                    System.out.println("\tLivros Emprestados:");
+
+                    for(int i=0; i<user.BorrowedList.size(); i++){
+
+                        System.out.println(" -> [" + i + "] " + 
+                        user.BorrowedList.get(i).getTitulo() + " - " + 
+                        user.BorrowedList.get(i).getAutor());
+                    }
+
+                    System.out.println("----------------------------------------");
+                    System.out.println("\tDevolver");
+                    System.out.println("----------------------------------------");
+                    
+                    System.out.print("--> ");
+                    choiceCode = input.nextInt();
+                    input.nextLine();
+                    System.out.print("\033\143");
+
+                    user.Devolver(choiceCode);
+
+                    break;
+
+                case 3: //Logout
+                    user = null;
+                    menu = false;
+                    break;
+            }
+            
+        }
+    }
+
+
+    public void MenuAdmin(Bibliotecario admin , 
+    ArrayList<Livro> livros, 
+    ArrayList<Pessoa> clients){
+
+        boolean menu = true;
+        int choice;
+
+        while(menu) {
+
+            do{
+                
+                System.out.println("----------------------------------------");
+                System.out.println(
+                "\t[1] Emprestar livro \n\t" 
+                + "[2] Checar empréstimos de usuário\n\t"
+                + "[3] Devolver livro \n\t"
+                + "[4] Criar livro\n\t"
+                + "[5] Logout ");
                 System.out.println("----------------------------------------");
                 System.out.print("--> ");
                 choice = input.nextInt();
@@ -55,16 +146,9 @@ public class Menu {
 
                 case 1: //Pegar emprestado
 
-                case 2:
+                    break;
 
-                    System.out.println("\tLivros Emprestados:");
-
-                    for(int i=1; i<=user.BorrowedList.size(); i++){
-
-                        System.out.println(i+" - [" + i + "] " + 
-                        user.BorrowedList.get(i).getTitulo() + " - " + 
-                        user.BorrowedList.get(i).getAutor());
-                    }
+                case 2: //Checar emprestimos
 
                     break;
 
@@ -74,16 +158,17 @@ public class Menu {
 
                     break;
 
-                case 4: //Logout
-                    user = null;
+                case 4://Criar livro
+
+                    admin.newBook(livros);
+                    
+                    break;
+
+                case 5: //Logout
                     menu = false;
                     break;
             }
             
         }
     }
-
-    //Fazer menu admin
-
-
 }
