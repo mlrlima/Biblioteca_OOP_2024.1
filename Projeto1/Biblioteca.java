@@ -163,14 +163,14 @@ public class Biblioteca  {
 
     static ArrayList<Livro> DeserializeLivro(){
 
-        ArrayList<Livro> livro = new ArrayList<Livro>();
+        ArrayList<Livro> book = new ArrayList<Livro>();
 
         try{
             FileInputStream bookInput = new FileInputStream("booksListData");
             ObjectInputStream bookStream = new ObjectInputStream(bookInput);
              
             // Method for deserialization of object
-            livro = (ArrayList<Livro>)bookStream.readObject();
+            book = (ArrayList<Livro>)bookStream.readObject();
              
             bookStream.close();
             bookInput.close();
@@ -186,6 +186,6 @@ public class Biblioteca  {
             System.out.println("ClassNotFoundException is caught");
         }
 
-        return livro;
+        return book;
     }
 }

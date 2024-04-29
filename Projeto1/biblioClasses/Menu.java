@@ -71,7 +71,7 @@ public class Menu {
                     
                     if(user.getEmprestados().size() > 0){
 
-                    System.out.println("Baseado em suas preferências, talvez goste:");
+                    System.out.println("Baseado em suas preferências, talvez goste:\n");
 
                     Recomendar(user.getGenerosHist(), bookList);
 
@@ -117,16 +117,10 @@ public class Menu {
                     System.out.println("----------------------------------------");
                     System.out.print("--> ");
 
-                    try{
-                        choiceCode = input.nextInt();
-                        input.nextLine();
+                    choiceCode = input.nextInt();
+                    input.nextLine();
 
-                        user.Devolver(choiceCode);
-                    }
-
-                    catch(Exception IndexOutOfBoundsException){
-                        System.out.println("Livro incorreto");
-                    }
+                    user.Devolver(choiceCode, bookList);
 
                     System.out.print("\033\143");
 
@@ -219,11 +213,9 @@ public class Menu {
 
         for (int i=0; i<generosHist.length; i++){
 
-
             if(generosHist[i] == 0){
                 continue;
             }
-
 
             double soma = 0;
 
@@ -235,12 +227,15 @@ public class Menu {
 
             for(Livro b: bookList){
 
-                if(b.getGenero() == i || b.getStatus())
+                if(b.getGenero() == i && b.getStatus())
                     conjunto.add(b);
             }
 
 
             for(int k=0; k<recs; k++){
+
+                if(conjunto.size() == 0)
+                    continue;
 
                 int n = rand.nextInt(conjunto.size());
                 tempBook = conjunto.get(n);

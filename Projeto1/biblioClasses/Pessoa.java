@@ -188,10 +188,26 @@ public class Pessoa implements java.io.Serializable{
     
     //DEVOLUCAO
 
-    public void Devolver(int bookChoice) {
+    public void Devolver(int choiceCode, ArrayList<Livro> livros) {
         
-        BorrowedList.get(bookChoice).switchStatus();
-        BorrowedList.remove(bookChoice);
+        if (choiceCode >= livros.size()){
+                        
+            System.out.print("\033\143");
+            System.out.println("Livro indisponível ou inexistente");
+            return;
+        }
+
+        for(int i=0; i<BorrowedList.size(); i++){
+
+            if(BorrowedList.get(i).getCode() == choiceCode){
+
+                BorrowedList.get(i).switchStatus();
+                BorrowedList.remove(i);
+                return;
+            }
+        }
+
+        System.out.println("Você não está com esse livro.");
     }
 
 }

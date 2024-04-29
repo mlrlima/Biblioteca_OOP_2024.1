@@ -70,4 +70,11 @@ public class Bibliotecario extends Pessoa{
     }
     
 
+    public void resetBooks(ArrayList<Livro> livros){
+
+        for(int i=0; i<livros.size(); i++){
+            livros.get(i).setStatus();
+        }
+    }
+
 }
