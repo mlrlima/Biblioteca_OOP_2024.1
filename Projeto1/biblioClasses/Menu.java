@@ -2,6 +2,7 @@
 
 package biblioClasses;
 import java.util.*;
+import java.lang.Math;
 
 public class Menu {
 
@@ -39,7 +40,8 @@ public class Menu {
 
                 for(int i=0; i<user.BorrowedList.size(); i++){
 
-                    System.out.println(" -> [" + i + "] " + 
+
+                    System.out.println(" -> [" + user.BorrowedList.get(i).getCode() + "] " + 
                     user.BorrowedList.get(i).getTitulo() + " - " + 
                     user.BorrowedList.get(i).getAutor());
                 }
@@ -61,16 +63,31 @@ public class Menu {
 
             switch(choice) {
 
-                case 1: //Pegar emprestado
+                case 1: //EMPRESTIMO
 
                     System.out.println("----------------------------------------");
                     System.out.println("\tRealizar Empréstimo");
                     System.out.println("----------------------------------------");
                     
+                    if(user.getEmprestados().size() > 0){
+
+                    System.out.println("Baseado em suas preferências, talvez goste:");
+
+                    Recomendar(user.getGenerosHist(), bookList);
+
+                    System.out.println("----------------------------------------");
+                    }
+                    
+
                     System.out.print("--> ");
                     choiceCode = input.nextInt();
                     input.nextLine();
                     System.out.print("\033\143");
+
+                    if(choiceCode > (bookList.size()-1)){
+                        System.out.println("Livro inexistente");
+                        break;
+                    }
 
                     user.Emprestar(bookList, choiceCode);
 
@@ -88,7 +105,9 @@ public class Menu {
 
                     for(int i=0; i<user.BorrowedList.size(); i++){
 
-                        System.out.println(" -> [" + i + "] " + 
+                        int code = user.BorrowedList.get(i).getCode();
+
+                        System.out.println(" -> [" + code + "] " + 
                         user.BorrowedList.get(i).getTitulo() + " - " + 
                         user.BorrowedList.get(i).getAutor());
                     }
@@ -96,13 +115,20 @@ public class Menu {
                     System.out.println("----------------------------------------");
                     System.out.println("\tDevolver");
                     System.out.println("----------------------------------------");
-                    
                     System.out.print("--> ");
-                    choiceCode = input.nextInt();
-                    input.nextLine();
-                    System.out.print("\033\143");
 
-                    user.Devolver(choiceCode);
+                    try{
+                        choiceCode = input.nextInt();
+                        input.nextLine();
+
+                        user.Devolver(choiceCode);
+                    }
+
+                    catch(Exception IndexOutOfBoundsException){
+                        System.out.println("Livro incorreto");
+                    }
+
+                    System.out.print("\033\143");
 
                     break;
 
@@ -116,17 +142,16 @@ public class Menu {
     }
 
 
-    public void MenuAdmin(Bibliotecario admin , 
-    ArrayList<Livro> livros, 
-    ArrayList<Pessoa> clients){
+    public void MenuAdmin(Bibliotecario admin , ArrayList<Livro> livros, ArrayList<Pessoa> users){
 
-        boolean menu = true;
+        boolean menuA = true;
         int choice;
 
-        while(menu) {
+        while(menuA) {
 
             do{
-                
+                System.out.println("----------------------------------------");
+                System.out.println("\t MODO ADMINISTRADOR");
                 System.out.println("----------------------------------------");
                 System.out.println(
                 "\t[1] Emprestar livro \n\t" 
@@ -140,35 +165,93 @@ public class Menu {
                 input.nextLine();
                 System.out.print("\033\143");
 
-            } while(choice<0 || choice>4);
+            } while(choice<0 || choice>5);
 
             switch(choice){
 
-                case 1: //Pegar emprestado
+                case 1: //Realizar Empréstimo para cliente
 
-                    break;
+                    Pessoa logUser = new Pessoa();
+                    logUser = users.get(logUser.Login(users));
 
-                case 2: //Checar emprestimos
+                    System.out.println("----------------------------------------");
+                    System.out.println("\tRealizar Empréstimo");
+                    System.out.println("----------------------------------------");
+                    
+                    System.out.print("--> ");
+                    int choiceCode = input.nextInt();
+                    input.nextLine();
+                    System.out.print("\033\143");
 
-                    break;
+                    if(choiceCode > (livros.size()-1)){
+                        System.out.print("\033\143");
+                        System.out.println("Livro inexistente");
+                        break;
+                    }
 
-                case 3: //Devolucao
-                
-                    //user.Devolver();
+                    admin.Emprestar(livros, choiceCode, logUser);
+                    logUser = null;
 
                     break;
 
                 case 4://Criar livro
 
                     admin.newBook(livros);
-                    
+
                     break;
 
                 case 5: //Logout
-                    menu = false;
+                    menuA = false;
                     break;
             }
             
+        }
+    }
+
+
+    public void Recomendar(int[] generosHist, ArrayList<Livro> bookList) {
+
+
+        Random rand = new Random();
+        ArrayList<Livro> conjunto = new ArrayList<Livro>();
+        Livro tempBook = new Livro();
+        double recs;
+
+        for (int i=0; i<generosHist.length; i++){
+
+
+            if(generosHist[i] == 0){
+                continue;
+            }
+
+
+            double soma = 0;
+
+            for(int j=0; j<generosHist.length; j++){
+                soma += generosHist[j]; 
+            }
+
+            recs = Math.round((generosHist[i]/soma) * 5.0);
+
+            for(Livro b: bookList){
+
+                if(b.getGenero() == i || b.getStatus())
+                    conjunto.add(b);
+            }
+
+
+            for(int k=0; k<recs; k++){
+
+                int n = rand.nextInt(conjunto.size());
+                tempBook = conjunto.get(n);
+
+                System.out.println("-> [" + tempBook.getCode() + "] " 
+                + tempBook.getTitulo() + " - " + tempBook.getAutor());
+
+                conjunto.remove(n);
+            }
+
+            conjunto.clear();
         }
     }
 }

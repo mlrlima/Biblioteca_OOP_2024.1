@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Bibliotecario extends Pessoa{
     
 
-
     //Adiciona novo livro a base de dados
 
     public void newBook(ArrayList<Livro> livros){
@@ -33,9 +32,42 @@ public class Bibliotecario extends Pessoa{
         newbook.setStatus();
 
         livros.add(newbook);
+        newbook.setCode(livros.size()-1);
+        System.out.print("\033\143");
     }
 
+    
+    public void Emprestar(ArrayList<Livro> livros, int choiceCode, Pessoa user){
 
+        if(user.getEmprestados().size() >= 6){
+            System.out.println("Cliente já atingiu número máximo de livros");
+            return;
+        }
+
+        if(livros.size() == 0){
+            System.out.println("----------------------------------------");
+            System.out.println("\tAinda não há livros.");
+            System.out.println("----------------------------------------");
+            return;
+        }
+
+
+        if(livros.get(choiceCode).getStatus() == true){
+
+            System.out.println("----------------------------------------");
+            System.out.println("\tLivro emprestado com sucesso!");
+            System.out.println(livros.get(choiceCode).getTitulo());
+
+            user.getEmprestados().add(livros.get(choiceCode));
+            livros.get(choiceCode).switchStatus();
+        }
+
+        else{
+            System.out.println("----------------------------------------");
+            System.out.println("Livro indisponível ou inexistente");
+        }
+
+    }
     
 
 }

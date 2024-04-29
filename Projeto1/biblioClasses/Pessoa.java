@@ -6,48 +6,59 @@ public class Pessoa implements java.io.Serializable{
     //ATRIBUTOS
     protected String nome, CPF, senha, endereco, telefone;
     transient Scanner input = new Scanner(System.in);
+    
+    //Lista de livros emprestados no momento pelo cliente
     protected ArrayList<Livro> BorrowedList = new ArrayList<Livro>();
 
-    //getters e setters
+    //Contagem de livros emprestados por genero
+    int[] generosHist = new int[10];
 
-    public void setNome(String nome){
+
+    //--------------getters e setters-----------------//
+
+    public void setNome(String nome) {
         this.nome=nome;
     }
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
-
+    //----------------------------------------------//
     public String getCPF() {
         return CPF;
     }
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
-
-    public void setSenha(String senha){
+    //----------------------------------------------//
+    public void setSenha(String senha) {
         this.senha=senha;
     }
-    public String getSenha(){
+    public String getSenha() {
         return senha;
     }
-
-    public void setEndereco(String endereco){
+    //----------------------------------------------//
+    public void setEndereco(String endereco) {
         this.endereco=endereco;
     }
-    public String getEndereco(){
+    public String getEndereco() {
         return endereco;
     }
-
-    public void setTelefone(String telefone){
+    //----------------------------------------------//
+    public void setTelefone(String telefone) {
         this.telefone=telefone;
     }
-    public String getTelefone(){
+    public String getTelefone() {
         return telefone;
     }
-
+    //----------------------------------------------//  
     public ArrayList<Livro> getEmprestados() {
         return BorrowedList;
     }
+    //----------------------------------------------//
+    public int[] getGenerosHist(){
+        return generosHist;
+    }
+    //----------------------------------------------//
 
     //LOGIN
 
@@ -135,6 +146,7 @@ public class Pessoa implements java.io.Serializable{
         return indexConta;
     }
 
+
     //EMPRESTIMO
 
     public void Emprestar(ArrayList<Livro> livros, int choiceCode){
@@ -156,10 +168,14 @@ public class Pessoa implements java.io.Serializable{
 
             System.out.println("----------------------------------------");
             System.out.println("\tLivro emprestado com sucesso!");
-            System.out.println(livros.get(choiceCode).getTitulo());
+            System.out.println(livros.get(choiceCode).getTitulo() + "-" + livros.get(choiceCode).getAutor());
 
+            //adiciona a lista de emprestados
             this.getEmprestados().add(livros.get(choiceCode));
-            livros.get(choiceCode).switchStatus();
+            //muda status do livro
+            livros.get(choiceCode).switchStatus(); 
+            //incrementa numero total de livros emprestados do genero
+            generosHist[livros.get(choiceCode).getGenero()]++ ; 
         }
 
         else{
@@ -169,6 +185,7 @@ public class Pessoa implements java.io.Serializable{
 
     }
 
+    
     //DEVOLUCAO
 
     public void Devolver(int bookChoice) {

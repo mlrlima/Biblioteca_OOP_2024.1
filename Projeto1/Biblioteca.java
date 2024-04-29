@@ -13,12 +13,6 @@ public class Biblioteca  {
         ArrayList<Pessoa> userList = DeserializeUser();
         ArrayList<String> cpfList = DeserializeCPF();
         ArrayList<Livro> bookList = DeserializeLivro();
-
-        /* 
-        System.out.println(bookList.get(0).getTitulo());
-        System.out.println(bookList.get(0).getAutor());
-        System.out.println(bookList.get(0).getStatus());
-        */
  
         Bibliotecario admin = new Bibliotecario();
         if (userList.size() == 0){
@@ -46,7 +40,6 @@ public class Biblioteca  {
                     }
 
                     else{
-                        System.out.println("\t MODO ADMINISTRADOR");
                         myMenu.MenuAdmin(admin, bookList, userList);
                     }
 
@@ -100,7 +93,6 @@ public class Biblioteca  {
             cpfStream.close(); 
             cpfStream.close();
     
-            System.out.println("userlist e bookslist serialized"); 
         } 
     
         catch (IOException ioe) { 

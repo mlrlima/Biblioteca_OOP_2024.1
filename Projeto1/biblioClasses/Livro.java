@@ -30,8 +30,8 @@ public class Livro implements java.io.Serializable {
         return autor;
     }
 
-    public void setCode(int code){
-        this.code = code;
+    public void setCode(int newcode){
+        this.code = newcode;
     }
     public int getCode(){
         return code;
