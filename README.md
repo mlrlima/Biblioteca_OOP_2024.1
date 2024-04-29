@@ -14,8 +14,15 @@
 
 # Descrição\Entrega
 
+Além dos requisitos básicos (descrição do projeto abaixo), está incluso:
 
+    -Contas distintas para clientes e bibliotecários, com funções também distintas.
+    
+    -Sistema de recomendação de livros baseado nos gêneros.
+    
+    -O bibliotecário pode adicionar novo livro à biblioteca; emprestar um livro por um cliente;
 
+    -Easter eggs: 
 
 
 
@@ -53,4 +60,6 @@ Contexto: Uma biblioteca precisa de um sistema para gerenciar seus livros, clien
 
 **7.Requisitos adicionais(30%):** Será considerado o que for feito além do requerimento mínimo esperado.
 
-**8.Easter Egg ao cliente(10%):** Surpreenda o cliente com algo interessante.9.Apresentação(20%): Pitch de no máximo 10 minutos vendendo a ideia. Será avaliado pela turma (cliente em potencial) por votação (kahoot) qual o melhor projeto(comprou a ideia) entre dois projetos apresentados
+**8.Easter Egg ao cliente(10%):** Surpreenda o cliente com algo interessante.
+
+**9.Apresentação(20%):** Pitch de no máximo 10 minutos vendendo a ideia. Será avaliado pela turma (cliente em potencial) por votação (kahoot) qual o melhor projeto(comprou a ideia) entre dois projetos apresentados
