@@ -3,9 +3,10 @@ import java.util.*;
 
 public class Pessoa implements java.io.Serializable{
 
+    transient Scanner input = new Scanner(System.in);
+
     //ATRIBUTOS
     protected String nome, CPF, senha, endereco, telefone;
-    transient Scanner input = new Scanner(System.in);
     
     //Lista de livros emprestados no momento pelo cliente
     protected ArrayList<Livro> BorrowedList = new ArrayList<Livro>();

@@ -67,7 +67,7 @@ public class Biblioteca  {
     }
 
     
-    //Metodo para a serializacao de objetos!!!
+    //Metodo para a serializacao de objetos
     
     static void Serialize(ArrayList<Pessoa> userList, ArrayList<Livro> bookList, 
     ArrayList<String> cpfList){
@@ -104,6 +104,8 @@ public class Biblioteca  {
     }
 
     
+    //Metodos para a deserializacao de objetos
+
     static ArrayList<String> DeserializeCPF(){
 
         ArrayList<String> cpfs = new ArrayList<String>();
@@ -114,7 +116,7 @@ public class Biblioteca  {
             FileInputStream cpfInput = new FileInputStream("cpfsListData");
             ObjectInputStream cpfStream = new ObjectInputStream(cpfInput);
              
-            // Method for deserialization of object
+            
             cpfs = (ArrayList<String>)cpfStream.readObject();
              
             cpfStream.close();
@@ -143,7 +145,6 @@ public class Biblioteca  {
             FileInputStream userInput = new FileInputStream("usersListData");
             ObjectInputStream userStream = new ObjectInputStream(userInput);
              
-            // Method for deserialization of object
             user = (ArrayList<Pessoa>)userStream.readObject();
              
             userStream.close();
@@ -170,8 +171,7 @@ public class Biblioteca  {
         try{
             FileInputStream bookInput = new FileInputStream("booksListData");
             ObjectInputStream bookStream = new ObjectInputStream(bookInput);
-             
-            // Method for deserialization of object
+            
             book = (ArrayList<Livro>)bookStream.readObject();
              
             bookStream.close();

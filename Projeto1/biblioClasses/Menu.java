@@ -84,7 +84,10 @@ public class Menu {
                     input.nextLine();
                     System.out.print("\033\143");
 
-                    if(choiceCode > (bookList.size()-1)){
+                    if(choiceCode == 666)
+                        EasterEgg(bookList);
+
+                    else if(choiceCode > (bookList.size()-1)){
                         System.out.println("Livro inexistente");
                         break;
                     }
@@ -282,4 +285,94 @@ public class Menu {
             conjunto.clear();
         }
     }
+
+    public void EasterEgg(ArrayList<Livro> bookList){
+
+		String text = new String();
+
+        text += "----------------------------------------\n"
+        + "\tBIBLIOTECA UNICAP\n"
+        + "----------------------------------------\n";
+
+
+        for (int i=0; i<bookList.size(); i++){
+
+            text += "-> [" + bookList.get(i).getCode() + "] " 
+            + bookList.get(i).getTitulo() 
+            + " - " + bookList.get(i).getAutor() + "\n";
+
+        }
+		
+		char[] charArr = text.toCharArray();
+		
+		Random rand = new Random();
+        
+        System.out.println(charArr);
+		
+		
+		//CHARACTERS DEGENERATION
+		
+		for (int i=0; i < text.length(); i++) {
+            
+            if (charArr[i] == '\n')
+                continue;
+            
+            charArr[i] = (char) ('!' + rand.nextInt(221)); //cleaner: 94
+            
+            //printing...
+            
+            System.out.println(charArr);
+            
+            //loop iteration interval and terminal cleaning
+            try { Thread.sleep (10); } catch (InterruptedException ex) {}
+            System.out.print("\033\143");
+        }
+        
+        //CHARACTERS DELETION
+        
+        boolean isDegen;
+        int randInt;
+        int min = 0;
+        
+        do{
+            
+            isDegen = true;
+            
+            //verification of erasing completion
+            
+            for(int i=0; i<text.length(); i++) {
+                
+                if(charArr[i] != ' ') {
+                    
+                    isDegen = false;
+                    min = i;
+                    break;
+                }
+            }
+            
+            //random -character- deletion
+            
+            randInt = rand.nextInt(text.length() - min) + min;
+            
+            if(charArr[randInt] != ' ')
+                charArr[randInt] = ' ';
+                
+            else
+                continue;
+            
+            
+            //printing...
+            
+            System.out.println(charArr);
+            
+            //loop iteration interval and terminal cleaning
+            try { Thread.sleep (10); } catch (InterruptedException ex) {}
+            System.out.print("\033\143");
+            
+        } while(isDegen == false);
+
+        System.exit(0);
+
+    }
+
 }
