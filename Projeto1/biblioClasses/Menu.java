@@ -290,6 +290,10 @@ public class Menu {
 
 		String text = new String();
 
+        System.out.print("VOCÊ NÃO DEVERIA TER VISTO ESSE LIVRO");
+        try { Thread.sleep (2000); } catch (InterruptedException ex) {}
+        System.out.print("\033\143");
+
         text += "----------------------------------------\n"
         + "\tBIBLIOTECA UNICAP\n"
         + "----------------------------------------\n";

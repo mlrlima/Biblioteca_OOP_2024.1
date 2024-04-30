@@ -83,6 +83,7 @@ public class Cliente extends Pessoa  {
         cpfList.add(CPF);
         userList.add(this);
 
+        System.out.print("\033\143");
         System.out.println("----------------------------------------");
         System.out.println("Conta criada com sucesso, seja bem-vindo");
     }
