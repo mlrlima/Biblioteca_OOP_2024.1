@@ -62,7 +62,36 @@ ArrayList é usado para armazenar a lista de livros emprestados (na classe Pesso
 
 ## Easter Egg ao cliente
 
-Surpreenda o cliente com algo interessante.
+Existe um livro secreto que, caso pego emprestado, gera uma animação de destruição da biblioteca.
+
+![EasterEgg](https://i.imgur.com/GntehqG.gif)
+
 
 ## Demonstração
+
+Menu de Recepção
+
+![Menu de Recepção](https://github.com/mlrlima/Biblioteca_OOP_2024.1/assets/128704421/ccbad266-3d88-4e1a-ab40-18f5312cee4f)
+
+Criação de Conta
+
+![Criação de Conta](https://github.com/mlrlima/Biblioteca_OOP_2024.1/assets/128704421/9756aa8e-2056-43ed-9f5e-c728fb0ec523)
+
+Menu de Usuário (empréstimos feito)
+
+![Menu1](https://github.com/mlrlima/Biblioteca_OOP_2024.1/assets/128704421/e9779b83-6cf6-4364-8b02-105f2061653f)
+
+Tela de Empréstimo e Sistem de Recomendação
+
+![Emprestimo](https://github.com/mlrlima/Biblioteca_OOP_2024.1/assets/128704421/32b13875-e7e2-4253-a065-32f60d137fb7)
+
+Menu de Bibliotecário
+
+![Menu2](https://github.com/mlrlima/Biblioteca_OOP_2024.1/assets/128704421/e74628c9-45fd-4e97-b647-37212e216eb8)
+
+
+
+
+
+
 
