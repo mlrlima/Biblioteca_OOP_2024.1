@@ -149,31 +149,32 @@ public class Menu {
                 System.out.println("----------------------------------------");
                 System.out.println(
                 "\t[1] Emprestar livro \n\t" 
-                + "[2] Checar empréstimos de usuário\n\t"
-                + "[3] Devolver livro \n\t"
-                + "[4] Criar livro\n\t"
-                + "[5] Logout ");
+                + "[2] Devolver livro \n\t"
+                + "[3] Criar livro\n\t"
+                + "[4] Logout ");
                 System.out.println("----------------------------------------");
                 System.out.print("--> ");
                 choice = input.nextInt();
                 input.nextLine();
                 System.out.print("\033\143");
 
-            } while(choice<0 || choice>5);
+            } while(choice<0 || choice>4);
+
+            int choiceCode;
 
             switch(choice){
 
                 case 1: //Realizar Empréstimo para cliente
 
-                    Pessoa logUser = new Pessoa();
-                    logUser = users.get(logUser.Login(users));
+                    Pessoa empUser = new Pessoa();
+                    empUser = users.get(empUser.Login(users));
 
                     System.out.println("----------------------------------------");
                     System.out.println("\tRealizar Empréstimo");
                     System.out.println("----------------------------------------");
                     
                     System.out.print("--> ");
-                    int choiceCode = input.nextInt();
+                    choiceCode = input.nextInt();
                     input.nextLine();
                     System.out.print("\033\143");
 
@@ -183,18 +184,50 @@ public class Menu {
                         break;
                     }
 
-                    admin.Emprestar(livros, choiceCode, logUser);
-                    logUser = null;
+                    admin.Emprestar(livros, choiceCode, empUser);
+                    empUser = null;
 
                     break;
 
-                case 4://Criar livro
+                case 2: //Devolucao
+
+                    Pessoa devUser = new Pessoa();
+                    devUser = users.get(devUser.Login(users));
+
+                    System.out.println("----------------------------------------");
+                    System.out.println("\tRealizar Devolução");
+                    System.out.println("----------------------------------------");
+                    
+                    System.out.println("\tLivros Emprestados:");
+
+                    for(int i=0; i<devUser.getEmprestados().size(); i++){
+
+                        int code = devUser.getEmprestados().get(i).getCode();
+
+                        System.out.println(" -> [" + code + "] " + 
+                        devUser.getEmprestados().get(i).getTitulo() + " - " + 
+                        devUser.getEmprestados().get(i).getAutor());
+                    }
+
+                    System.out.println("----------------------------------------");
+
+                    System.out.print("--> ");
+                    choiceCode = input.nextInt();
+                    input.nextLine();
+                    System.out.print("\033\143");
+
+                    admin.Devolver(choiceCode, livros, devUser);
+                    devUser = null;
+                    break;
+
+
+                case 3://Criar livro
 
                     admin.newBook(livros);
 
                     break;
 
-                case 5: //Logout
+                case 4: //Logout
                     menuA = false;
                     break;
             }

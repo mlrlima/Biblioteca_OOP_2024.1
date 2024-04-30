@@ -36,7 +36,8 @@ public class Bibliotecario extends Pessoa{
         System.out.print("\033\143");
     }
 
-    
+    //FAZER EMPRESTIMO PARA USUÁRIO
+
     public void Emprestar(ArrayList<Livro> livros, int choiceCode, Pessoa user){
 
         if(user.getEmprestados().size() >= 6){
@@ -69,6 +70,30 @@ public class Bibliotecario extends Pessoa{
 
     }
     
+    //FAZER DEVOLUCAO PARA USUARIO
+
+    public void Devolver(int choiceCode, ArrayList<Livro> livros, Pessoa user){
+
+        if (choiceCode >= livros.size()){
+                        
+            System.out.print("\033\143");
+            System.out.println("Livro indisponível ou inexistente");
+            return;
+        }
+
+        for(int i=0; i<user.getEmprestados().size(); i++){
+
+            if(user.getEmprestados().get(i).getCode() == choiceCode){
+
+                user.getEmprestados().get(i).switchStatus();
+                user.getEmprestados().remove(i);
+                return;
+            }
+        }
+
+        System.out.println("Cliente não está com esse livro.");
+    }
+
 
     public void resetBooks(ArrayList<Livro> livros){
 

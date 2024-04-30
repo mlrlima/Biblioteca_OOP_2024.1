@@ -24,7 +24,7 @@ public class Livro implements java.io.Serializable {
      * 9 - Filosofia
     */
 
-    //getters e setters
+//--------------getters e setters---------------//
 
     public void setTitulo(String titulo){
         this.titulo=titulo;
@@ -32,28 +32,28 @@ public class Livro implements java.io.Serializable {
     public String getTitulo(){
         return titulo;
     }
-
+//----------------------------------------------//
     public void setAutor(String autor){
         this.autor=autor;
     }
     public String getAutor(){
         return autor;
     }
-
+ //----------------------------------------------//
     public void setCode(int newcode){
         this.code = newcode;
     }
     public int getCode(){
         return code;
     }
-
+ //----------------------------------------------//
     public void setGenero(int genero){
         this.genero=genero;
     }
     public int getGenero(){
         return genero;
     }
-
+ //----------------------------------------------//
     public boolean getStatus(){
         return status;
     }
@@ -70,11 +70,12 @@ public class Livro implements java.io.Serializable {
             this.status= true;
         }
     }
-
+ //----------------------------------------------//
     public void setRating(double rating){
         this.rating = rating;
     }
     public double getRating(){
         return rating;
     }
+ //----------------------------------------------//
 }

@@ -14,7 +14,7 @@ public class Pessoa implements java.io.Serializable{
     int[] generosHist = new int[10];
 
 
-    //--------------getters e setters-----------------//
+    //--------------getters e setters---------------//
 
     public void setNome(String nome) {
         this.nome=nome;
@@ -201,8 +201,8 @@ public class Pessoa implements java.io.Serializable{
 
             if(BorrowedList.get(i).getCode() == choiceCode){
 
-                BorrowedList.get(i).switchStatus();
-                BorrowedList.remove(i);
+                getEmprestados().get(i).switchStatus();
+                getEmprestados().remove(i);
                 return;
             }
         }

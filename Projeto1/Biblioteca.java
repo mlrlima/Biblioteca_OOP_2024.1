@@ -21,6 +21,8 @@ public class Biblioteca  {
             userList.add(admin);
         }
 
+        admin.resetBooks(bookList);
+
         Menu myMenu = new Menu();
         boolean biblioteca = true;
 
