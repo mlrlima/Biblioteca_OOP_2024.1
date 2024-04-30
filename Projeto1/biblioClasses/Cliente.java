@@ -49,9 +49,36 @@ public class Cliente extends Pessoa  {
             System.out.print("\033\143");
         }
 
+        System.out.println("Endereço: ");
+        endereco = input.nextLine();
+
+        
+        boolean telvalido=false;
+        System.out.println("Telefone: ");
+        telefone = input.nextLine();
+        if(telefone.length()>7 && telefone.length()<14 && telefone.matches("\\d+")){
+            telvalido=true;
+        }
+
+        while(!telvalido){
+            System.out.print("\033\143");
+            System.out.println("----------------------------------------");
+            System.out.println("Telefone inválido, tente denovo");
+            System.out.println("----------------------------------------");
+            System.out.println("Telefone: ");
+            telefone = input.nextLine();
+            System.out.print("\033\143");
+
+            if(telefone.length()>7 && telefone.length()<14 && telefone.matches("\\d+")){
+                telvalido=true;
+            }
+        }
+
         this.setNome(nome);
         this.setCPF(CPF);
         this.setSenha(senha);
+        this.setEndereco(endereco);
+        this.setTelefone(telefone);
 
         cpfList.add(CPF);
         userList.add(this);
