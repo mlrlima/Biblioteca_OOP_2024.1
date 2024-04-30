@@ -1,65 +1,68 @@
-# SEGUNDO PROJETO DA DISCIPLINA DE POO
+# Projeto: Sistema de Gerenciamento de Biblioteca
 
 **Universidade Católica de Pernambuco**
 
-**Nome:** Maria Luiza Ribeiro de Lima **RA:** 00000848982
-
-**Nome:** Roberto Regis de Araújo Lima Neto **RA:** 00000848959
-
-**Nome:** Vínicius Martins Galindo Andrade **RA:** 00000848753
+**Alunos:** 
+- Maria Luiza Ribeiro de Lima (**RA:** 00000848982)
+- Roberto Regis de Araújo Lima Neto (**RA:** 00000848959)
+- Vínicius Martins Galindo Andrade (**RA:** 00000848753)
 
 **Disciplina:** Programação Orientada a Objetos (2024.1)
 
 **Professor:** Lucas Rodolfo
 
-# Descrição\Entrega
+Uma biblioteca precisa de um sistema para gerenciar seus livros, clientes e empréstimos. O sistema deve permitir o cadastro de livros e clientes, bem como o controle de empréstimos
 
-Além dos requisitos básicos (descrição do projeto abaixo), está incluso:
-
-    -Contas distintas para clientes e bibliotecários, com funções também distintas.
+## Classes
     
-    -Sistema de recomendação de livros baseado nos gêneros.
-    
-    -O bibliotecário pode adicionar novo livro à biblioteca; emprestar um livro por um cliente;
+- **Pessoa:** Esta é a classe base para qualquer pessoa envolvida no sistema.
+  
+    - <ins>Atributos</ins>: nome, CPF, senha, endereço, telefone.
+    - <ins>Métodos</ins>: Getters e setters para os atributos. Métodos para Empréstimo e Devolução de livros e Login.
 
-    -Easter eggs: 
+- **Cliente (herda de Pessoa):** Esta classe representa um cliente da biblioteca.
+  
+    - Atributos: livros emprestados (ArrayList). nome, CPF, senha, endereço, telefone. (herdados de Pessoa)
+    - <ins>Métodos</ins>: Criação de conta.
 
+- **Bibliotecário (herda de Pessoa):** Esta classe representa o administrador.
+    -  <ins>Atributos</ins>: nome, CPF, senha, endereço, telefone. (herdados de Pessoa)
+    -   <ins>Métodos</ins>: Criação de novo livro. Emprestar para usuário e Devolver para usuário (sobrescritos de Pessoa).
 
+- **Livro:** Esta classe representa um livro na biblioteca.
+    -  <ins>Atributos</ins>: título, autor, código do livro, status (disponível ou emprestado), gênero do livro.
+    -   <ins>Métodos</ins>: getters e setters para os atributos.
 
-# Projeto: Sistema de Gerenciamento de Biblioteca
+- **Menu:** Esta classe contém os Menus de interação com o usuário
+    - <ins>Métodos</ins>: Menu de Recepção, Menu do Cliente, Menu do Bibliotecario, Sistema de Recomendação
+     
+- **Biblioteca:** Esta classe representa a biblioteca e contém a lógica principal do sistema.
+    - <ins>Atributos</ins>: lista de livros (ArrayList), lista de clientes (ArrayList), lista de CPF (ArrayList).
+    - <ins>Métodos</ins>: Serialização e Deserialização dos ArrayLists (clientes, livros).
 
-Contexto: Uma biblioteca precisa de um sistema para gerenciar seus livros, clientes e empréstimos. O sistema deve permitir o cadastro de livros e clientes, bem como o controle de empréstimos.Requisitos do Projeto: 
+**As classes Pessoa, Cliente, Bibliotecário, Livro e Menu fazem parte do pacote biblioClasses, que é importado para a classe Biblioteca
 
-**1.Classes(10%):**
-    
-    -Pessoa: Esta é a classe base para qualquer pessoa envolvida no sistema.
-         1.Atributos: nome, endereço, telefone.
-         2.Métodos: getterse setterspara os atributos.
-    
-    -Cliente(herda de Pessoa): Esta classe representa um cliente da biblioteca.
-         1.Atributos: id do cliente,            livros emprestados (ArrayList).
-         2.Métodos: getterse setterspara os atributos, emprestar livro, devolver livro.o
-    
-    -Livro: Esta classe representa um livro na biblioteca.
-         1.Atributos: título, autor, id do livro, status (disponível ou emprestado).
-         2.Métodos: getterse setterspara os atributos.
-         
-    -Biblioteca: Esta classe representa a biblioteca e contém a lógica principal do sistema.
-         1.Atributos: lista de livros (ArrayList), lista de clientes (ArrayList).
-         2.Métodos: adicionar livro, remover livro, adicionar cliente, remover cliente, emprestar livro, devolver livro.2.
+## Polimorfismo
 
-**Polimorfismo(5%):** Você pode implementar polimorfismo na classe Pessoa. Por exemplo, a classe Pessoa pode ter um método imprimirDetalhes() que imprime os detalhes da pessoa. A classe Cliente, que herda de Pessoa, pode sobrescrever este método para incluir** detalhes adicionais, como o id do cliente e os livros emprestados.
+A classe Bibliotecario, que herda de Pessoa, sobrescreve os métodos de Empréstimo e Devolução de livros (Emprestar e Devolver) para que possa os fazer através da conta de qualquer usuário. Um Login temporário é feito para que o acesso aos dados da conta desejada seja efetuado.
 
-**3.Abstração(10%):** A abstração é implementada através das classes e métodos descritos acima. Cada classe representa uma entidade distinta (Pessoa, Cliente, Livro, Biblioteca) e cada método representa uma ação que pode ser realizada por essa entidade.
+## Encapsulamento
 
-**4.Encapsulamento(5%):** O encapsulamento é implementado através do uso de modificadores de acesso (private, public) para os atributos das classes. Os atributos são definidos como privados e são acessados através de métodos públicos (getters e setters).
+O encapsulamento é implementado através do uso de modificadores de acesso (private, public) para os atributos das classes. Os atributos são definidos como private e são acessados através de métodos públicos (getters e setters). Atributos que serão herdados para subclasses são definidos como protected.
 
-**5.ArrayList(5%):** ArrayList é usado para armazenar a lista de livros emprestados por um cliente (na classe Cliente) e a lista de livros e clientes na biblioteca (na classe Biblioteca).
+## ArrayList 
 
-**6.Entrega(5%):** Link do GitHub via Teams. No GitHub deve conter o código, além de screenshots da interface do usuário. Um readme com uma breve descrição do que foi feito deve estar preenchido. A equipe toda deve ter acesso ao GitHub compartilhado (é um projeto em equipe).
+ArrayList é usado para armazenar a lista de livros emprestados (na classe Pessoa) e a lista de livros, clientes e CPFs na biblioteca (na classe Biblioteca).
 
-**7.Requisitos adicionais(30%):** Será considerado o que for feito além do requerimento mínimo esperado.
+## Requisitos adicionais
 
-**8.Easter Egg ao cliente(10%):** Surpreenda o cliente com algo interessante.
+- **Serialização:** Ao final da execução, os ArrayLists de usuários, livros e CPFs são serializados (convertidos em um fluxo de bytes) e, ao início da execução, são deserializados (resgatados desse mesmo fluxo de bytes). Dessa forma, as contas e livros criados e seus atributos não são perdidos ao final da execução.
 
-**9.Apresentação(20%):** Pitch de no máximo 10 minutos vendendo a ideia. Será avaliado pela turma (cliente em potencial) por votação (kahoot) qual o melhor projeto(comprou a ideia) entre dois projetos apresentados
+- **Sistema de Recomendação:** Ao fazer o empréstimo, são recomendados livros que possam interessar o cliente . As recomendações são distribuídas de forma proporcional aos gêneros dos livros que ele emprestou anteriormente.
+
+## Easter Egg ao cliente
+
+Surpreenda o cliente com algo interessante.
+
+## Demonstração
+
